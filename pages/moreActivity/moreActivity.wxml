@@ -1,0 +1,36 @@
+<view class="more-activity">
+  <Navbar2 text="更多活动" num="{{list.length}}" bg="#ededed"></Navbar2>
+
+  <view class="list" wx:if="{{list.length}}">
+    <view class="item" wx:for="{{list}}" wx:key="index">
+      <view class="time">{{item.date}}</view>
+      <view class="box" wx:for="{{item.list}}" wx:for-item="value" wx:for-key="key" wx:key="key">
+        <view class="img">
+          <image src="{{value.bookImg[0].url || '/image/noData.png'}}" mode="aspectFit"></image>
+        </view>
+        <view class="right">
+          <view class="title">{{value.pictureBook}}</view>
+        </view>
+        <view class="btn btn1" wx:if="{{value.status == 0}}">
+          已预约
+        </view>
+        <view class="btn btn3" wx:if="{{value.status == 1}}">
+          已上课
+        </view>
+        <view class="btn btn1" wx:if="{{value.status == 2}}">
+          排队中
+        </view>
+        <view class="btn btn2" wx:if="{{value.status == 4}}">
+          已取消
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="none" wx:else>
+    <view class="img">
+      <image src="/image/noData.png" mode="aspectFill"></image>
+    </view>
+    <view>暂无数据～</view>
+  </view>
+</view>

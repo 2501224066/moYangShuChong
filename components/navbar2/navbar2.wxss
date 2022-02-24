@@ -1,0 +1,44 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  color: #000;
+  font-size: 36rpx;
+  font-weight: 600;
+  line-height: 50rpx;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+.navbar>.icon {
+  height: 70rpx;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 20%;
+  padding: 0 32rpx;
+}
+
+.navbar>.text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar>.text>span {
+  font-size: 26rpx;
+  color: #999;
+  margin-left: 10rpx;
+}
+
+.navbar>.icon>.img {
+  width: 50rpx;
+  height: 50rpx;
+}

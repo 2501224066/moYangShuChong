@@ -1,0 +1,14 @@
+<view class="navbar" style="height:{{navHeight}}px; padding-top:{{navTop}}px;background: {{bg}};color: {{color}};">
+  <view class="icon" style="background: rgba(0, 0, 0, 0.2);border: 1rpx solid rgba(255, 255, 255, 0.44);">
+    <view class="img">
+      <image src="/image/left.png" mode="aspectFill" bindtap="to"></image>
+    </view>
+    <view class="img">
+      <image src="/image/home.png" mode="aspectFill" bindtap="to" data-url="/pages/index/index"></image>
+    </view>
+  </view>
+  <view class="text">{{text}}<span wx:if="{{num != ''}}">({{num}})</span></view>
+  <view class="icon"></view>
+</view>
+
+<view wx:if="{{entity}}" style="height:{{navHeight}}px;"></view>

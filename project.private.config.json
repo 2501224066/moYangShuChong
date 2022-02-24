@@ -1,0 +1,120 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "我的",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "账密登录",
+          "pathName": "pages/login2/login2",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "重置密码",
+          "pathName": "pages/resetPwd/resetPwd",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索",
+          "pathName": "pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索结果",
+          "pathName": "pages/result/result",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "书架",
+          "pathName": "pages/bookcase/bookcase",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "消息详情",
+          "pathName": "pages/noticeDetail/noticeDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "消息",
+          "pathName": "pages/notice/notice",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "绘本详情",
+          "pathName": "pages/bookDetail/bookDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "收藏",
+          "pathName": "pages/collect/collect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "更多活动",
+          "pathName": "pages/moreActivity/moreActivity",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "活动",
+          "pathName": "pages/activity/activity",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "预约列表",
+          "pathName": "pages/reserve/reserve",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "账号设置",
+          "pathName": "pages/setting/setting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "预约详情",
+          "pathName": "pages/reserveDetail/reserveDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "授权消息",
+          "pathName": "pages/authInfo/authInfo",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

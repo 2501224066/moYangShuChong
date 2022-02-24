@@ -1,0 +1,75 @@
+page {
+  background: #F3981C;
+}
+
+.login {
+  padding: 0 64rpx;
+}
+
+.bg {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 426rpx;
+  height: 558rpx;
+  z-index: -1;
+}
+
+.logo {
+  width: 300rpx;
+  height: 300rpx;
+  background: #FFFFFF;
+  border-radius: 50%;
+  margin: 20vh auto 100rpx auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo>.img {
+  width: 170rpx;
+  height: 170rpx;
+}
+
+.sub {
+  width: 100% !important;
+  border: 2rpx solid #FFFFFF;
+  color: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 300;
+  padding: 0;
+  background: #F3981C;
+}
+
+
+.way {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  margin-top: 70rpx;
+}
+
+.agree {
+  position: fixed;
+  left: 64rpx;
+  bottom: 10vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+
+.agree>.img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.agree span {
+  color: #FCD12B;
+}

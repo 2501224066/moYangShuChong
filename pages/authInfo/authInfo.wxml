@@ -1,0 +1,7 @@
+<view class="auth-info">
+  <view class="img">
+    <image src="/image/bg.png" mode="widthFix"></image>
+  </view>
+
+  <button class="auth" bindtap="getUserProfile">授权信息</button>
+</view>

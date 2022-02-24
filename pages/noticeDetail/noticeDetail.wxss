@@ -1,0 +1,47 @@
+page {
+  background: rgba(237, 237, 237, 0.9);
+}
+
+.notice-detail {
+  padding: 34rpx 32rpx;
+}
+
+.card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding-bottom: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.card>.header {
+  padding: 0 32rpx;
+  height: 108rpx;
+  display: flex;
+  align-items: center;
+  font-size: 38rpx;
+  font-weight: 400;
+  color: #333333;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.card>.header>.img {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 20rpx;
+}
+
+.card>.header>.time {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #999999;
+  flex: 1;
+  text-align: right;
+}
+
+.card>.content {
+  padding: 14rpx 32rpx 0 96rpx;
+  line-height: 56rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #666666;
+}

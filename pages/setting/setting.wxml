@@ -1,0 +1,23 @@
+<Navbar2 text="账号设置"></Navbar2>
+
+<view class="setting">
+  <view class="item">
+    <view>头像</view>
+    <view class="header">
+      <image src="{{detail.icon}}" mode="aspectFill"></image>
+    </view>
+  </view>
+  <view class="item">
+    <view>昵称</view>
+    <view>{{detail.nickName}}</view>
+  </view>
+  <!--
+  <view class="item" bindtap="to" data-url="/pages/resetPwd/resetPwd">
+    <view>修改密码</view>
+    <view class="img">
+      <image src="/image/right.png" mode="aspectFill"></image>
+    </view>
+  </view>
+  -->
+
+</view>

@@ -1,0 +1,37 @@
+<view class="search">
+
+  <view class="form">
+    <view class="left">
+      <view class="img">
+        <image src="/image/search1.png" mode="aspectFill"></image>
+      </view>
+      <input type="text" placeholder="请输入故事名称" placeholder-class="placeholder" bindinput="setState" data-name="keyword"
+        value="{{keyword}}" />
+      <view class="img" wx:if="{{keyword != ''}}" bindtap="delKeyword">
+        <image src="/image/delete1.png" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="sub" wx:if="{{keyword == ''}}" bindtap="noKeywory">搜索</view>
+    <view class="sub" wx:else bindtap="to" data-url="/pages/result/result?keyword={{keyword}}">搜索</view>
+  </view>
+
+  <view class="title" wx:if="{{hot.length > 0}}">热门搜索</view>
+
+  <view class="hot">
+    <view class="item" wx:for="{{hot}}" wx:key='index' bindtap="to" data-url="/pages/result/result?keyword={{item}}">
+      {{item}}
+    </view>
+  </view>
+
+  <view class="title" wx:if="{{history.length > 0}}">搜索历史</view>
+
+  <view class="history">
+    <view class="item" wx:for="{{history}}" wx:key='index'>
+      <view class="label" bindtap="to" data-url="/pages/result/result?keyword={{item}}">{{item}}</view>
+      <view class="img" bindtap="delHistory" data-index="{{index}}">
+        <image src="/image/delete.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+
+</view>

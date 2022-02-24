@@ -1,0 +1,33 @@
+<view class="bookcase">
+  <view class="header">
+    <view class="img">
+      <image src="{{filterShow ? '/image/up.png' : '/image/filter.png'}}" mode="aspectFill" bindtap="setFilterShow">
+      </image>
+    </view>
+    <view>{{name}}</view>
+    <view class="img"></view>
+  </view>
+  <view style="height: 88rpx;"></view>
+
+  <view class="list">
+    <view class="bg" wx:for="{{list.length / 4}}" wx:key="index" style="top: {{(index+1) * 120 -10}}px">
+      <image src="/image/shelf.png" mode="widthFix">
+      </image>
+    </view>
+    <view class="content">
+      <view class="img" wx:for="{{list}}" wx:key="index" bindtap="goDetail" data-item="{{item}}">
+        <image src="{{item.bookImg[0].url}}" mode="widthFix">
+        </image>
+      </view>
+      <view class="img" wx:for="{{(list.length % 4 - 4) * -1}}" wx:key="index"></view>
+    </view>
+  </view>
+
+  <view class="filter" wx:if="{{filterShow}}">
+    <view class="card">
+      <view class="item {{name == item.subjectName ? 'active' : ''}}" wx:for="{{classify}}" wx:key="index"
+        bindtap="checkout" data-id="{{item.id}}">{{item.subjectName}}</view>
+      <view class="item" wx:for="{{(classify.length % 4 - 4) * -1}}" wx:key="index"></view>
+    </view>
+  </view>
+</view>

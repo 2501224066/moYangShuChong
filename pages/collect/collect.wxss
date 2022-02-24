@@ -1,0 +1,88 @@
+page {
+  background: #EDEDED;
+}
+
+.collect {
+  padding-bottom: 34rpx;
+}
+
+.list {
+  padding: 0 32rpx;
+}
+
+.list>.item>.time {
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 40rpx;
+  margin: 48rpx 0 32rpx 0;
+}
+
+.list>.item>.box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32rpx;
+  background: #fff;
+  box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(0, 0, 0, 0.05);
+  border-radius: 16rpx;
+  padding: 32rpx;
+}
+
+.list>.item>.box>.img {
+  width: 126rpx;
+  height: 168rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+
+.list>.item>.box>.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20rpx;
+  height: 168rpx;
+}
+
+.list>.item>.box>.right>.title {
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+  width: 450rpx;
+  color: #333333;
+  line-height: 44rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list>.item>.box>.right>.memo {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 34rpx;
+  height: 70rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.none {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #999999;
+}
+
+.none>.img {
+  width: 270rpx;
+  height: 292rpx;
+}

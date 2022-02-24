@@ -1,0 +1,116 @@
+<!-- 工具 -->
+<wxs src="../../utils/index.wxs" module="util"></wxs>
+
+<view class="activity">
+  <Navbar2 text="我的活动" color="#fff" bg="#F3981C"></Navbar2>
+
+  <view class="top">
+    <view class="card">
+      <view class="num">
+        <view>
+          <view class="img">
+            <image src="/image/count1.png" mode="aspectFill"></image>
+          </view>
+          <view>
+            <view class="count">{{allNum || 0}}</view>
+            <view>伴读时光屋</view>
+          </view>
+        </view>
+        <view>
+          <view class="img">
+            <image src="/image/count2.png" mode="aspectFill"></image>
+          </view>
+          <view>
+            <view class="count">{{joinNum || 0}}</view>
+            <view>已参加次数</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="title">
+      <view class="history">预约历史</view>
+      <view bindtap="to" data-url="/pages/moreActivity/moreActivity">
+        <view>更多活动</view>
+        <view class="img">
+          <image src="/image/right1.png" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="week">
+    <view wx:for="{{weekDay}}" wx:key="index" bindtap="checkoutDate" data-index="{{index}}"
+      class="num {{nowY === item.Y && nowM === item.M && nowD === item.D ? 'today' : ''}} {{checkout == index ? 'active' : ''}}">
+      <view>
+        {{nowD == item.D + 1 ? '昨天' : ''}}
+        {{nowD == item.D ? '今天' : ''}}
+        {{nowD == item.D - 1 ? '明天' : ''}}
+        {{nowD != item.D && nowD != item.D - 1 && nowD != item.D + 1 ? item.W : ''}}
+      </view>
+      <view>
+      </view>
+      <view>{{item.M * 1}}/{{item.D * 1}}</view>
+    </view>
+  </view>
+
+  <view class="content">
+    <view class="list" wx:if="{{list.length > 0}}">
+      <view class="item" wx:for="{{list}}" wx:key="index">
+        <view class="up">
+          <view class="img">
+            <image src="{{item.bookImg[0].url}}" mode="aspectFit"></image>
+          </view>
+          <view class="right">
+            <view>活动主题：<span>{{item.subject}}</span></view>
+            <view>活动时间：<span>{{item.time}}</span></view>
+            <view>活动老师：<span>{{item.teacher}}</span></view>
+            <view class="li">
+              <view class="line">
+                <view class="has" style="width: {{item.number / item.totalNumber * 100 + '%'}}"></view>
+              </view>
+              <view><span style="color:#F05B63;margin: 0">{{item.appointmentNum}}</span>/{{item.totalNumber}}</view>
+            </view>
+          </view>
+        </view>
+
+        <view class="bottom" wx:if="{{item.appointmentStatus == 0}}">
+          <view class="btn btn1">
+            已预约
+          </view>
+          <view class="btn btn2" bindtap="cancel" data-id="{{item.id}}">
+            取消
+          </view>
+        </view>
+
+        <view class="btn btn3" wx:if="{{item.appointmentStatus == 1}}">
+          已上课
+        </view>
+
+        <view class="bottom" wx:if="{{item.appointmentStatus == 2}}">
+          <view class="btn btn6">
+            排队中
+          </view>
+          <view class="btn btn2" bindtap="cancel" data-id="{{item.id}}">
+            取消
+          </view>
+        </view>
+
+        <view class="bottom" wx:if="{{item.appointmentStatus == 3 || item.appointmentStatus == 4}}">
+          <view class="btn btn3">
+            课程已取消
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+    <view class="none" wx:else>
+      <view class="img">
+        <image src="/image/noData.png" mode="aspectFill"></image>
+      </view>
+      <view>暂无活动～</view>
+    </view>
+  </view>
+</view>

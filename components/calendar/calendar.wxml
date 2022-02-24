@@ -1,0 +1,42 @@
+<!-- 工具 -->
+<wxs src="../../utils/index.wxs" module="util"></wxs>
+
+<view class="img" bindtap="setShow">
+  <image src="/image/date.png" mode="aspectFill"></image>
+</view>
+
+<view class="calendar" wx:if="{{show}}">
+  <view class="bg" bindtap="setShow"></view>
+
+  <view class="content">
+    <view class="top">
+      <view>{{nowY}}</view>
+      <view class="label"><span>{{nowM}}月{{nowD}}日</span> <span>周{{nowWeek}}</span></view>
+    </view>
+    <view class="bottom">
+      <view class="up">
+        <view class="img" bindtap="up">
+          <image src="/image/l.png" mode="aspectFill"></image>
+        </view>
+        <view>{{showY}}年{{showM}}月</view>
+        <view class="img" bindtap="down">
+          <image src="/image/r.png" mode="aspectFill"></image>
+        </view>
+      </view>
+
+      <view class="box">
+        <view wx:for="{{weekArr}}" wx:key="index">{{item}}</view>
+        <view wx:for="{{before}}" wx:key="index"></view>
+        <view wx:for="{{num}}" wx:key="index" bindtap="checkout" data-d="{{index + 1}}">
+          <span
+            class="{{nowY==showY && nowM==showM && nowD==(index+1) ? 'now' : '' }} {{showY == day.Y && showM == day.M && (index+1) == day.D  ? 'checkout' : '' }}">
+            {{index+ 1}}
+          </span>
+          <span class="has"
+            wx:if="{{util.indexOf(has, showY + '-' + util.addZero(showM) + '-' + util.addZero(index+1))}}"></span>
+        </view>
+        <view wx:for="{{after}}" wx:key="index"></view>
+      </view>
+    </view>
+  </view>
+</view>

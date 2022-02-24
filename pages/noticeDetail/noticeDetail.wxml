@@ -1,0 +1,18 @@
+<view class="notice-detail">
+  <Navbar2 text="消息详情" bg="#ededed"></Navbar2>
+
+  <view class="card">
+    <view class="header">
+      <view class="img">
+        <image src="{{type == 2 ? '/image/notice1.png' : '/image/notice2.png'}}" mode="aspectFill"></image>
+      </view>
+      <view>{{title[type]}}</view>
+      <view class="time">{{time}}</view>
+    </view>
+    <view class="content">
+      <view wx:for="{{content}}" wx:key="index">
+        {{item}}
+      </view>
+    </view>
+  </view>
+</view>

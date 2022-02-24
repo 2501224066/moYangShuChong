@@ -1,0 +1,26 @@
+<view class="collect">
+  <Navbar2 text="我的收藏" num="{{list.length}}" bg="#ededed"></Navbar2>
+
+  <view class="list" wx:if="{{list.length}}">
+    <view class="item" wx:for="{{list}}" wx:key="index">
+      <view class="time">{{item.date}}</view>
+      <view class="box" wx:for="{{item.list}}" wx:for-item="value" wx:for-key="key" wx:key="key" bindtap="to"
+        data-url="/pages/bookDetail/bookDetail?id={{value.id}}">
+        <view class="img">
+          <image src="{{value.bookImg[0].url}}" mode="aspectFit"></image>
+        </view>
+        <view class="right">
+          <view class="title">{{value.subjectName}}</view>
+          <view class="memo">{{value.bookItem}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="none" wx:else>
+    <view class="img">
+      <image src="/image/noData.png" mode="aspectFill"></image>
+    </view>
+    <view>暂无收藏～</view>
+  </view>
+</view>

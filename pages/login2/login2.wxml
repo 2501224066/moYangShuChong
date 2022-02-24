@@ -1,0 +1,36 @@
+<view class="login">
+  <view class="title">账号密码登录</view>
+
+  <view class="form">
+    <view class="item">
+      <input type="text" maxlength="20" placeholder="请输入手机号码或借阅卡号" placeholder-class="placeholder" value="{{account}}"
+        bindinput="setState" data-name="account" />
+      <view class="img" bindtap="clearAccount">
+        <image src="/image/delete.png" mode=" aspectFill"> </image>
+      </view>
+    </view>
+    <view class="item">
+      <input wx:if="{{showPwd}}" type="text" maxlength="20" placeholder="请输入密码" placeholder-class="placeholder"
+        value="{{password}}" bindinput="setState" data-name="password" />
+      <input wx:else type="password" maxlength="20" placeholder="请输入密码" placeholder-class="placeholder"
+        value="{{password}}" bindinput="setState" data-name="password" />
+      <view class="img" bindtap="setShowPwd">
+        <image src="{{showPwd ? '/image/show.png' : '/image/unShow.png'}}" mode=" aspectFill"> </image>
+      </view>
+    </view>
+  </view>
+
+  <view class="sub" bindtap="login">登录</view>
+
+  <view class="way">
+    <view bindtap="to" data-url="/pages/my/my">暂不登录</view>
+    <view bindtap="to" data-url="/pages/login/login" style="color: #F3981C;">微信一键登录</view>
+  </view>
+
+  <view class="agree" bindtap="agree">
+    <view class="img">
+      <image src="{{agree ? '/image/check_s.png' : '/image/check.png'}}" mode=" aspectFill"> </image>
+    </view>
+    <view>已阅读并同意墨洋书虫<span>《用户协议》</span>、<span>《隐私政策》</span></view>
+  </view>
+</view>

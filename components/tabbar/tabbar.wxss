@@ -1,0 +1,36 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0 5%;
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 99999;
+  border-top: 1rpx solid #E5E5E5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer>.fbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footer>.fbox>.tab {
+  flex: 1;
+  height: 80rpx;
+  font-size: 22rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.footer>.fbox>.tab>.img {
+  margin: 0 auto;
+  width: 50rpx;
+  height: 50rpx;
+}

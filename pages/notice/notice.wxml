@@ -1,0 +1,31 @@
+<view class="notice">
+  <Navbar2 text="我的消息" num="{{list.length}}" bg="#ededed"></Navbar2>
+
+  <view class="list" wx:if="{{list.length}}">
+    <view class="item" wx:for="{{list}}" wx:key="index" bindtap="to"
+      data-url="/pages/noticeDetail/noticeDetail?type={{item.type}}&content={{item.content}}&time={{item.sendTime}}&id={{item.id}}">
+      <view class=" img">
+        <image src="/image/noticeIcon{{item.type}}.png" mode="aspectFill"></image>
+      </view>
+      <view class="content">
+        <view class="top">
+          <view class="title">
+            {{item.type == 0 ? '活动消息' : ''}}
+            {{item.type == 1 ? '课程消息' : ''}}
+            {{item.type == 2 ? '服务消息' : ''}}
+            <span wx:if="{{item.status == 0}}"></span>
+          </view>
+          <view>{{item.sendTime}}</view>
+        </view>
+        <view class="memo">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="none" wx:else>
+    <view class="img">
+      <image src="/image/noData.png" mode="aspectFill"></image>
+    </view>
+    <view>暂无消息～</view>
+  </view>
+</view>

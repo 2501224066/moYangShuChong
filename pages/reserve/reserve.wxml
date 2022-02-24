@@ -1,0 +1,110 @@
+<!-- 工具 -->
+<wxs src="../../utils/index.wxs" module="util"></wxs>
+
+<view class="reserve">
+  <Navbar2 text="预约列表" color="#fff" bg="#F3981C"></Navbar2>
+
+  <view class="top">
+    <Calendar day="{{day}}" area="{{areaList[areaIndex]}}" bindchange="calendarChange"></Calendar>
+    <view class="right">
+      <view class="name">
+        <picker bindchange="checkoutArea" value="{{areaIndex}}" range="{{areaList}}" range-key="name">
+          <view class="picker">
+            {{areaList[areaIndex].name}}
+          </view>
+        </picker>
+      </view>
+      <view class="img">
+        <image src="/image/bottom.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="week">
+    <view wx:for="{{weekDay}}" wx:key="index" bindtap="checkoutDate" data-index="{{index}}"
+      class="num {{nowY === item.Y && nowM === item.M && nowD === item.D ? 'today' : ''}} {{weekCheckout == index ? 'active' : ''}}">
+      <view>{{item.W}}</view>
+      <view>
+        <span class="red"
+          wx:if="{{util.indexOf(has, item.Y + '-' + util.addZero(item.M) + '-' + util.addZero(item.D))}}"></span>
+      </view>
+      <view>{{item.D * 1}}</view>
+    </view>
+  </view>
+
+
+  <view class="content">
+    <view class="list" wx:if="{{list.length >0 }}">
+      <view class="item" wx:for="{{list}}" wx:key="index" bindtap="to"
+        data-url="/pages/reserveDetail/reserveDetail?id={{item.id}}">
+        <view class="up">
+          <view class="img">
+            <image src="{{item.bookImg[0].url}}" mode="aspectFit"></image>
+          </view>
+          <view class="right">
+            <view>活动主题：<span>{{item.subject}}</span></view>
+            <view>活动时间：<span>{{item.time}}</span></view>
+            <view>活动老师：<span>{{item.teacher}}</span></view>
+            <view class="li" wx:if="{{item.status != null}}">
+              <view class="line">
+                <view class="has" style="width: {{item.number / item.totalNumber * 100 + '%'}}"></view>
+              </view>
+              <view><span style="color:#F05B63;margin: 0">{{item.number}}</span>/{{item.totalNumber}}</view>
+            </view>
+          </view>
+        </view>
+
+        <view class="bottom" wx:if="{{item.status == 0}}">
+          <view class="btn btn4" catchtap="reserve" data-id="{{item.id}}">
+            预约
+          </view>
+        </view>
+
+        <view class="bottom" wx:if="{{item.status == 1}}">
+          <view class="btn btn1">
+            已预约
+          </view>
+          <view class="btn btn2" catchtap="cancel" data-id="{{item.id}}">
+            取消
+          </view>
+        </view>
+
+        <view class="bottom" wx:if="{{item.status == 2}}">
+          <view class="btn btn5" catchtap="reserve" data-id="{{item.id}}">
+            排队
+          </view>
+        </view>
+
+        <view class="bottom" wx:if="{{item.status == 3}}">
+          <view class="btn btn6">
+            排队中
+          </view>
+          <view class="btn btn2" catchtap="cancel" data-id="{{item.id}}">
+            取消
+          </view>
+        </view>
+
+        <view class="bottom" wx:if="{{item.status == 4}}">
+          <view class="btn btn3">
+            课程已取消
+          </view>
+        </view>
+
+        <view class="bottom" wx:if="{{item.status == null}}">
+          <view class="btn btn3">
+            已过期
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="none" wx:else>
+      <view class="img">
+        <image src="/image/noData.png" mode="aspectFill"></image>
+      </view>
+      <view>暂无活动～</view>
+    </view>
+
+  </view>
+
+</view>

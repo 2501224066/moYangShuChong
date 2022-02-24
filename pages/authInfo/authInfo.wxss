@@ -1,0 +1,18 @@
+.img {
+  width: 50%;
+  margin: 10vh auto;
+}
+
+.auth {
+  width: 80% !important;
+  margin: 0 10% !important;
+  background: #F3981C;
+  color: #fff;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: 300;
+  padding: 0;
+}

@@ -1,0 +1,45 @@
+// 文本处理
+var editText = function (text, params) {
+  return text.replace(getRegExp(params, "g"), "<span style='color: #F3981C'>" + params + "</span>");
+}
+
+// 富文本图片样式修改
+var imgTrans = function (text) {
+  var params = 'style="font-size: 14px; max-width: 100%;"/>'
+  return text.replace(getRegExp(params, "g"), "style='font-size: 14px; width: 100%; border-radius: 16px;margin: 5px 0'/>");
+}
+
+// 秒转分钟
+var sToI = function (num) {
+  num = num ? Math.floor(num) : 0
+  var l = Math.floor(num / 60)
+  var r = num - l * 60
+  return (l < 10 ? "0" + l : l) + ":" + (r < 10 ? "0" + r : r)
+}
+
+// 元素是否存在列表
+var indexOf = function (array, param) {
+  return array.indexOf(param) > -1 ? true : false;
+}
+
+// 补0
+var addZero = function (num) {
+  if (num < 10) {
+    return "0" + num
+  }
+  return num
+}
+
+// 取整
+var toFixed = function (param, len = 0) {
+  return param.toFixed(len)
+}
+
+module.exports = {
+  editText: editText,
+  imgTrans: imgTrans,
+  sToI: sToI,
+  indexOf: indexOf,
+  addZero: addZero,
+  toFixed: toFixed
+}

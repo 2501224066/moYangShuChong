@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "Navbar2": "/components/navbar2/navbar2",
+    "Calendar": "/components/calendar/calendar"
+  },
+  "navigationStyle": "custom"
+}

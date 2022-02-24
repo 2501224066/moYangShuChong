@@ -1,0 +1,6 @@
+<view class="navbar" style="height:{{navHeight}}px; padding-top:{{navTop}}px">
+  <view class="img">
+    <image src="/image/logo.png" mode="aspectFill"></image>
+  </view>
+  <view>墨洋书虫馆</view>
+</view>

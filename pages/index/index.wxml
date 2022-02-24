@@ -1,0 +1,60 @@
+<view class="index">
+  <view class="top" style="padding-top: {{navHeight}}px">
+    <Navbar style="opacity: {{ (20 - navScrollTop) / 20  }}"></Navbar>
+
+    <view class="search" id="dom" bindtap="to" data-url="/pages/search/search">
+      <view class="img">
+        <image src="/image/search.png" mode="aspectFill"></image>
+      </view>
+      <view class="input">搜索</view>
+    </view>
+
+    <view class="banner">
+      <swiper autoplay="true">
+        <swiper-item wx:for="{{bannerList}}" wx:key="index" bindtap="bannerGo" data-link="{{item.link}}"
+          data-type="{{item.linkType}}" data-id="{{item.linkId}}">
+          <image src="{{item.img}}" mode="aspectFill">
+          </image>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+
+  <view class="icon">
+    <view class="item" wx:for="{{iconList}}" wx:key="index" bindtap="to"
+      data-url="/pages/bookcase/bookcase?id={{item.id}}">
+      <view class="img">
+        <image src="{{item.subjectImg}}" mode="aspectFill">
+        </image>
+      </view>
+      <view>{{item.subjectName}}</view>
+    </view>
+  </view>
+
+  <view class="title">
+    <view class="img">
+      <image src="/image/chong.png" mode="aspectFill">
+      </image>
+    </view>
+    <view>绘本上新</view>
+  </view>
+
+  <view class="card">
+    <view class="item" wx:for="{{bookList}}" wx:key="index" bindtap="goDetail" data-item="{{item}}">
+      <view class="header">
+        <view class="img">
+          <image src="{{item.bookImg[0].url}}" mode="aspectFit">
+          </image>
+        </view>
+        <view>
+          <view class="name">{{item.bookName}}</view>
+          <view>作者：{{item.bookAuthor}}</view>
+        </view>
+      </view>
+      <view class="content">{{item.bookItem}}</view>
+    </view>
+    <view class="after"></view>
+  </view>
+</view>
+
+<Tabbar></Tabbar>

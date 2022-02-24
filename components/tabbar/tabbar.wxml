@@ -1,0 +1,16 @@
+<view class="footer shadow" style="height: 130rpx; padding-bottom:{{iphoneFooter ? 34 :  0}}rpx">
+  <view class="fbox">
+    <view class="tab" wx:for="{{tabbar.list}}" wx:key="index" bindtap="to" data-url="{{item.pagePath}}"
+      data-index="{{index}}">
+      <view class="img">
+        <image src="{{tabbarIndex != index ? item.iconPath : item.selectedIconPath}}" mode="aspectFill"></image>
+      </view>
+      <view style="color: {{tabbarIndex != index ? tabbar.color : tabbar.selectedColor}}">{{item.text}}</view>
+    </view>
+  </view>
+</view>
+<view style="height: 130rpx; padding-bottom:{{iphoneFooter ? 34 :  0}}rpx"></view>
+
+
+<!-- 时光屋 -->
+<Area style="display: {{tabbarIndex == 1 ? 'block' : 'none'}}"></Area>

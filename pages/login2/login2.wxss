@@ -1,0 +1,77 @@
+.login {
+  padding: 0 64rpx
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: 400;
+  color: #333333;
+  margin: 20vh 0 80rpx 0
+}
+
+.sub {
+  width: 100%;
+  color: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 300;
+  padding: 0;
+  background: #F3981C;
+}
+
+.form {
+  margin-bottom: 60rpx;
+}
+
+.form>.item {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.form>.item>input {
+  flex: 1;
+  font-size: 32rpx;
+  margin-right: 20rpx;
+}
+
+.form>.item .placeholder {
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #CCCCCC;
+}
+
+.form>.item>.img {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.way {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #666;
+  margin-top: 70rpx;
+}
+
+.agree {
+  position: fixed;
+  left: 64rpx;
+  bottom: 10vh;
+  color: #666666;
+  display: flex;
+  align-items: center;
+}
+
+.agree>.img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.agree span {
+  color: #333;
+}

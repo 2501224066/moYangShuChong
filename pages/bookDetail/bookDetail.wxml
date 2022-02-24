@@ -1,0 +1,69 @@
+<!-- 工具 -->
+<wxs src="../../utils/index.wxs" module="util"></wxs>
+
+<Navbar2 entity="{{false}}"></Navbar2>
+
+<view class="book-detail">
+  <view class="top">
+    <view class="img">
+      <image src="{{detail.bookImg[0].url}}" mode="aspectFit">
+      </image>
+    </view>
+
+    <view class="content">
+      <view>
+        <view class="name">{{detail.bookName}}</view>
+        <view>作者：{{detail.bookAuthor}}</view>
+      </view>
+      <view class="follow" bindtap="unCollect" wx:if="{{detail.isColl}}">已收藏</view>
+      <view class="follow" bindtap="collect" wx:else>收藏</view>
+    </view>
+  </view>
+
+  <view class="tab">
+    <view class="{{tab.index == index ? 'active' : ''}}" wx:for="{{tab.list}}" wx:key="index" bindtap="checkoutTab"
+      data-index="{{index}}">{{item}}</view>
+  </view>
+
+  <view class="container">
+    <!-- 绘本音频 -->
+    <view class="title" bindtap="add" wx:if="{{tab.index === 0 && detail.bookAudio.length > 0}}">
+      <view class="img">
+        <image src="/image/play.png" mode="aspectFill"></image>
+      </view>
+      <view>播放全部<span>({{detail.bookAudio.length}})</span></view>
+    </view>
+    <view class="list" wx:if="{{tab.index === 0 && detail.bookAudio.length > 0}}">
+      <view class="item" wx:for="{{detail.bookAudio}}" wx:key="index" bindtap="add" data-index="{{index}}">
+        <view>{{index + 1}}</view>
+        <view class="name {{nowPlayTitle == item.title ? 'active' : ''}}">{{item.title}}</view>
+      </view>
+    </view>
+    <view class="none" wx:if="{{tab.index === 0 && detail.bookAudio.length == 0}}">
+      <view class="img">
+        <image src="/image/noData.png" mode="aspectFill"></image>
+      </view>
+      <view>暂无音频～</view>
+    </view>
+
+
+    <!-- 绘本介绍 -->
+    <view class="box" wx:if="{{tab.index === 1}}">
+      <rich-text nodes="{{util.imgTrans(detail.bookItem)}}"></rich-text>
+    </view>
+
+    <!-- 绘本导读 -->
+    <view class="box" wx:if="{{tab.index === 2}}">
+      <video wx:if="{{detail.guideVideo && detail.guideVideo.length > 0}}" id="myVideo"
+        src="{{detail.guideVideo.length && detail.guideVideo[0].url}}" 	bindtimeupdate="videoTimeupdate"></video>
+      <view class="none" wx:else>
+        <view class="img">
+          <image src="/image/noData.png" mode="aspectFill"></image>
+        </view>
+        <view>暂无视频～</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<Play show="{{playerShow}}" small="{{small}}" bind:nowPlay="nowPlay"></Play>

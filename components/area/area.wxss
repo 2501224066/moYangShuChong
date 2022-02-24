@@ -1,0 +1,37 @@
+.area {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 240rpx;
+  background: #FFFFFF;
+  box-shadow: 10rpx 10rpx 20rpx 0rpx rgba(0, 0, 0, 0.1), -10rpx -10rpx 20rpx 0rpx rgba(0, 0, 0, 0.1);
+  border-radius: 32rpx;
+  opacity: .95;
+  text-align: center;
+  z-index: 100;
+}
+
+.area>.item {
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 44px;
+  text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.area>.item:hover {
+  color: #F3981C;
+}
+
+
+.area>.triangle {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: -20rpx;
+  width: 0;
+  height: 0;
+  border-top: 20rpx solid #fff;
+  border-right: 20rpx solid transparent;
+  border-left: 20rpx solid transparent;
+}

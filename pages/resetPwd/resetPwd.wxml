@@ -1,0 +1,36 @@
+<Navbar2></Navbar2>
+
+<view class="login">
+  <view class="title">找回密码</view>
+
+  <view class="form">
+    <view class="item">
+      <view style="margin-right: 20rpx">+86</view>
+      <input type="text" maxlength="20" placeholder="请输入手机号码" placeholder-class="placeholder" value="{{account}}"
+        bindinput="setState" data-name="account" />
+    </view>
+    <view class="item">
+      <input type="text" maxlength="20" placeholder="请输入短信验证码" placeholder-class="placeholder" value="{{smsCode}}"
+        bindinput="setState" data-name="smsCode" />
+      <view style="margin-left: 20rpx;color: #F3981C">获取验证码</view>
+    </view>
+    <view class="item">
+      <input wx:if="{{showPwd}}" type="text" maxlength="20" placeholder="请输入密码" placeholder-class="placeholder"
+        value="{{password}}" bindinput="setState" data-name="password" />
+      <input wx:else type="password" maxlength="20" placeholder="请设置6-16位新密码" placeholder-class="placeholder"
+        value="{{password}}" bindinput="setState" data-name="password" />
+      <view class="img" bindtap="setShowPwd">
+        <image src="{{showPwd ? '/image/show.png' : '/image/unShow.png'}}" mode=" aspectFill"> </image>
+      </view>
+    </view>
+  </view>
+
+  <view class="sub">更新密码</view>
+
+  <view class="agree">
+    <view class="img">
+      <image src="{{agree ? '/image/check_s.png' : '/image/check.png'}}" mode=" aspectFill"> </image>
+    </view>
+    <view>已阅读并同意墨洋书虫<span>《用户协议》</span>、<span>隐私政策》</span></view>
+  </view>
+</view>

@@ -1,0 +1,164 @@
+<Navbar2 entity="{{false}}"></Navbar2>
+
+<view class="reserve-detail">
+  <view class="top">
+    <view class="bg">
+      <view class="mask"></view>
+      <image src="{{detail.bookImg[0].url}}" mode="widthFix"></image>
+    </view>
+    <view class="content">
+      <view class="name">{{detail.subject}}</view>
+      <view class="memo">
+        {{detail.readInfo}}
+      </view>
+    </view>
+    <view class="man" wx:if="{{detail.icon.length > 0}}">
+      <view class="label">预约会员</view>
+      <view class="img" wx:for="{{detail.icon}}" wx:key="index">
+        <image src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="tab">
+    <view class="{{tab.index == index ? 'active' : ''}}" wx:for="{{tab.list}}" wx:key="index" bindtap="checkoutTab"
+      data-index="{{index}}">{{item}}</view>
+  </view>
+
+  <view class="footer">
+
+    <!-- 活动目标 -->
+    <view class="box" wx:if="{{tab.index === 0}}">
+      <view class="label">学习目标</view>
+      <view class="content">
+        {{detail.target}}
+      </view>
+    </view>
+
+    <!-- 伴读介绍 -->
+    <view class="box" wx:if="{{tab.index === 1}}">
+      <rich-text nodes="{{detail.readIntroduce}}"></rich-text>
+    </view>
+
+    <!-- 预约规则 -->
+    <view class="box" wx:if="{{tab.index === 2}}">
+      <view class="label">预约规则</view>
+      <view class="content">
+        <view class="step">
+          <view class="img">
+            <image src="/image/cor.png" mode="aspectFill"></image>
+          </view>
+          <view class="line">
+            <view class="li ls"></view>
+            <view>课程预约</view>
+          </view>
+          <view class="img">
+            <image src="/image/cor.png" mode="aspectFill"></image>
+          </view>
+          <view class="line">
+            <view class="li ls"></view>
+            <view>排队</view>
+          </view>
+          <view class="img">
+            <image src="/image/cor.png" mode="aspectFill"></image>
+          </view>
+          <view class="line">
+            <view class="li"></view>
+            <view style="color:#F05B63">开课前30分钟 无法预约</view>
+          </view>
+          <view class="img">
+            <image src="/image/cdr.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+
+      <view class="label">取消规则</view>
+      <view class="content">
+        <view class="step">
+          <view class="img">
+            <image src="/image/cor.png" mode="aspectFill"></image>
+          </view>
+          <view class="line">
+            <view class="li ls"></view>
+            <view>免责取消</view>
+          </view>
+          <view class="img">
+            <image src="/image/cor.png" mode="aspectFill"></image>
+          </view>
+          <view class="line">
+            <view class="li"></view>
+            <view style="color:#F05B63">开课前6小时内无法预约</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="label">1、用户主动取消</view>
+      <view class="memo">
+        开课前6小时内，无法免责取消。开课前6小时内取消预约会抵扣课时，请大家根据自己的时间，合理安排课程预约。
+      </view>
+
+      <view class="label">2、书馆发起取消</view>
+      <view class="memo">
+        课程开始前120分钟，预约会员人数小于3人，后台系统会自动取消课程，取消的课程无法继续预约。已经预约的用户，取消课程不计入您的课时内
+      </view>
+      <view class="memo">
+        请大家知悉，感谢您对墨洋书虫馆的支持与厚爱。
+      </view>
+    </view>
+
+    <view class="status">
+      <view class="num" wx:if="{{detail.status == 0}}">
+        <span style="color: #FF7533;">{{detail.number}}</span>/{{detail.totalNumber}} 预约中
+      </view>
+
+      <view class="num" wx:if="{{detail.status == 3}}">
+        <view> 已约满， <span style="color: #FF7533;">{{detail.number}}</span>人排队中，</view>
+        <view>排队中优先按照排队先后顺序选择</view>
+      </view>
+
+      <view class="bottom" wx:if="{{detail.status == 4}}">
+        <view class="btn btn3">
+          课程已取消
+        </view>
+      </view>
+
+      <view class="bottom" wx:if="{{detail.status == 0}}">
+        <view class="btn btn4" bindtap="reserve" data-id="{{detail.id}}">
+          预约
+        </view>
+      </view>
+
+      <view class="bottom" wx:if="{{detail.status == 1}}">
+        <view class="btn btn1">
+          已预约
+        </view>
+        <view class="btn btn2" bindtap="cancel" data-id="{{detail.id}}">
+          取消
+        </view>
+      </view>
+
+      <view class="bottom" wx:if="{{detail.status == 2}}">
+        <view class="btn btn5" bindtap="reserve" data-id="{{detail.id}}">
+          排队
+        </view>
+      </view>
+
+      <view class="bottom" wx:if="{{detail.status == 3}}">
+        <view class="btn btn6">
+          排队中
+        </view>
+        <view class="btn btn2" bindtap="cancel" data-id="{{detail.id}}">
+          取消
+        </view>
+      </view>
+
+      <view class="bottom" wx:if="{{detail.status == 4}}">
+        <view class="btn btn3">
+          课程已取消
+        </view>
+      </view>
+
+      <view class="memo" wx:if="{{detail.status == 0 || detail.status == 3}}">上课指南：请提前10分钟到店签到，准备上课</view>
+    </view>
+  </view>
+</view>

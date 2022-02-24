@@ -1,0 +1,45 @@
+<!-- 工具 -->
+<wxs src="../../utils/index.wxs" module="util"></wxs>
+
+<view class="result">
+  <view class="form">
+    <view class="left">
+      <view class="img">
+        <image src="/image/search1.png" mode="aspectFill"></image>
+      </view>
+      <input type="text" placeholder="请输入故事名称" placeholder-class="placeholder" bindinput="setState" data-name="keyword"
+        value="{{keyword}}" />
+      <view class="img" wx:if="{{keyword != ''}}" bindtap="delKeyword">
+        <image src="/image/delete1.png" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="sub" bindtap="to" data-url="/pages/result/result?keyword={{keyword}}">搜索</view>
+  </view>
+
+  <view class="list" wx:if="{{list.length > 0}}">
+    <view class="item" wx:for="{{list}}" wx:key="index" bindtap="to"
+      data-url="/pages/bookDetail/bookDetail?id={{item.id}}">
+      <view class="img">
+        <image src="{{item.bookImg[0].url}}" mode="aspectFill">
+        </image>
+      </view>
+      <view class="content">
+        <view class="title">
+          <rich-text nodes="{{util.editText(item.bookName, keyword)}}"></rich-text>
+        </view>
+        <view class="memo">
+          <rich-text nodes="{{util.editText(item.bookItem,  keyword)}}"></rich-text>
+        </view>
+      </view>
+    </view>
+    <view class="more">查看更多</view>
+  </view>
+
+
+  <view class="none" wx:else>
+    <view class="img">
+      <image src="/image/noData.png" mode="aspectFill"></image>
+    </view>
+    <view>暂无搜索结果哦～</view>
+  </view>
+</view>

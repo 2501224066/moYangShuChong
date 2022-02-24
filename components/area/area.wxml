@@ -1,0 +1,6 @@
+<view class="area" style="bottom:{{iphoneFooter ? 194 : 160}}rpx">
+  <view class="item" wx:for="{{list}}" wx:key="index" bindtap="to" data-url="/pages/reserve/reserve?area={{item.name}}">
+    {{item.name}}
+  </view>
+  <view class="triangle"></view>
+</view>

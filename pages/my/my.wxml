@@ -1,0 +1,60 @@
+<view class="my">
+  <view class="top">
+    <view class="right">
+      <view class="img">
+        <image src="/image/chong2.png" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="card" bindtap="toLogin">
+      <view class="header">
+        <view class="img">
+          <image src="{{loginStatus && detail.avatarUrl ? detail.avatarUrl : '/image/defaultHeader.png'}}"
+            mode="aspectFill">
+          </image>
+        </view>
+        <view>
+          <view class="name" wx:if="{{loginStatus}}">{{detail.nickName || '-'}}</view>
+          <view class="name" wx:else bindtap="to" data-url="/pages/login/login">点击登录</view>
+          <view wx:if="{{loginStatus}}">
+            {{ detail.loginType == 1 ? '借阅卡' : '手机号' }}：
+            {{detail.loginType == 1 ? detail.cardId : detail.phone}}
+          </view>
+          <view wx:if="{{loginStatus}}">到期时间：{{endTime || '-'}}</view>
+        </view>
+      </view>
+      <view class="bottom">
+        <view>
+          <view>{{loginStatus ? allNum : '-'}}</view>
+          <view>伴读时光屋</view>
+        </view>
+        <view>
+          <view>{{loginStatus ? joinNum : '-'}}</view>
+          <view>已参加次数</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="content">
+    <view class="item" wx:for="{{icon}}" wx:key="index" bindtap="to" data-url="{{item.link}}">
+      <view class="img">
+        <image src="{{item.img}}" mode="aspectFill"></image>
+      </view>
+      <view class="label">{{item.label}}</view>
+      <view class="go">
+        <image src="/image/right.png" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="item" bindtap="unLogin" wx:if="{{loginStatus}}">
+      <view class="img">
+        <image src="/image/my-icon5.png" mode="aspectFill"></image>
+      </view>
+      <view class="label">退出登录</view>
+      <view class="go">
+        <image src="/image/right.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<Tabbar></Tabbar>

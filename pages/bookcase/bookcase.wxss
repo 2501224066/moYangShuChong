@@ -1,0 +1,97 @@
+.bookcase {
+  padding-bottom: 34rpx;
+}
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 88rpx;
+  width: 100%;
+  background: #F5F5F5;
+  padding: 0 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #333333;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.header>.img {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.list {
+  position: relative;
+}
+
+.list>.bg {
+  position: absolute;
+  left: 0;
+  width: 98%;
+  margin: 0 1%;
+  z-index: -1;
+}
+
+
+.list>.content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+
+.list>.content>.img {
+  width: 22%;
+  height: 90px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.filter {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 99;
+  background: rgba(0, 0, 0, .4);
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.filter>.card {
+  margin-top: 88rpx;
+  background: #fff;
+  border-radius: 0px 32rpx 32rpx 32rpx;
+  padding: 0 50rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter>.card>.item {
+  width: 30%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #333333;
+  overflow: hidden;
+}
+
+.filter>.card>.active {
+  color: #F3981C;
+}
