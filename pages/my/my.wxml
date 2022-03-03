@@ -45,6 +45,18 @@
         <image src="/image/right.png" mode="aspectFill"></image>
       </view>
     </view>
+
+    <view class="item">
+      
+      <view class="img">
+          <image src="/image/kefu.png" mode="aspectFill"></image>
+        </view>
+        <view class="label">客服</view>
+        <view class="go">
+          <image src="/image/right.png" mode="aspectFill"></image>
+      </view>
+      <button open-type="contact" bindcontact="handleContact" class="kefu" ></button>
+    </view>
     <view class="item" bindtap="unLogin" wx:if="{{loginStatus}}">
       <view class="img">
         <image src="/image/my-icon5.png" mode="aspectFill"></image>

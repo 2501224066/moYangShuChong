@@ -216,3 +216,30 @@ page {
   width: 270rpx;
   height: 292rpx;
 }
+
+/* .box{
+  border-radius: 15rpx; 
+} */
+
+/* .box>.label {
+  margin-bottom: 20rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.box>.memo {
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #333333;
+}
+
+.box>.content {
+  margin-bottom: 20rpx;
+  background: #FFFFFF;
+  border-radius: 32rpx;
+  padding: 20rpx;
+} */
+
+

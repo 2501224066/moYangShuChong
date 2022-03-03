@@ -10,9 +10,9 @@
     </view>
 
     <view class="banner">
-      <swiper autoplay="true">
+      <swiper autoplay="true" circular="true">
         <swiper-item wx:for="{{bannerList}}" wx:key="index" bindtap="bannerGo" data-link="{{item.link}}"
-          data-type="{{item.linkType}}" data-id="{{item.linkId}}">
+          data-type="{{item.linkType}}" data-id="{{item.linkId}}"  data-index="{{index}}">
           <image src="{{item.img}}" mode="aspectFill">
           </image>
         </swiper-item>
@@ -56,5 +56,14 @@
     <view class="after"></view>
   </view>
 </view>
+
+
+<view class="service">
+  <view class="img">
+    <image src="/image/kefu.png" mode="aspectFill"></image>
+  </view>
+  <button open-type="contact" bindcontact="handleContact" class="kefu" ></button>
+</view>
+
 
 <Tabbar></Tabbar>

@@ -15,7 +15,7 @@ Page({
       img: "/image/my-icon1.png",
       label: "我的活动",
       link: "/pages/activity/activity"
-    }, {
+    },  {
       img: "/image/my-icon2.png",
       label: "我的收藏",
       link: "/pages/collect/collect"

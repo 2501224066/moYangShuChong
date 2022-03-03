@@ -45,7 +45,7 @@ Page({
       currentTarget: {
         dataset: {
           url: e.currentTarget.dataset.type === 1 ?
-            "/pages/web/web?url=" + e.currentTarget.dataset.link : e.currentTarget.dataset.link + "?id=" + e.currentTarget.dataset.id
+            "/pages/web/web?index=" + e.currentTarget.dataset.index : e.currentTarget.dataset.link + "?id=" + e.currentTarget.dataset.id
         }
       }
     })

@@ -138,3 +138,31 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+
+.service{
+  position: fixed;
+  right: 3vh;
+  bottom: 25vh;
+  background: #fff;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+.service>.img>image {
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.service>.kefu {
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  background:rgba(255, 255, 255, 0);
+}

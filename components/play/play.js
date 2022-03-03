@@ -143,6 +143,8 @@ Component({
       if (wx.getStorageSync('loginStatus')) {
         return
       }
+
+      
       if (this.audioCtx.currentTime >= 30) {
         this.audioCtx.seek(0)
         this.audioCtx.pause()

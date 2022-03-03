@@ -4,7 +4,8 @@
   <view class="top">
     <view class="bg">
       <view class="mask"></view>
-      <image src="{{detail.bookImg[0].url}}" mode="widthFix"></image>
+      <image style="height:680rpx"  src="{{detail.bookImg[0].url}}" ></image>
+      <!--mode="widthFix"-->
     </view>
     <view class="content">
       <view class="name">{{detail.subject}}</view>
@@ -37,7 +38,9 @@
 
     <!-- 伴读介绍 -->
     <view class="box" wx:if="{{tab.index === 1}}">
-      <rich-text nodes="{{detail.readIntroduce}}"></rich-text>
+      <view class="content">
+        <rich-text nodes="{{detail.readIntroduce}}"></rich-text>
+      </view>
     </view>
 
     <!-- 预约规则 -->
@@ -64,7 +67,7 @@
           </view>
           <view class="line">
             <view class="li"></view>
-            <view style="color:#F05B63">开课前30分钟 无法预约</view>
+            <view style="color:#F05B63">开课前15分钟 无法预约</view>
           </view>
           <view class="img">
             <image src="/image/cdr.png" mode="aspectFill"></image>
@@ -87,7 +90,7 @@
           </view>
           <view class="line">
             <view class="li"></view>
-            <view style="color:#F05B63">开课前6小时内无法预约</view>
+            <view style="color:#F05B63">开课前6小时内无法取消</view>
           </view>
         </view>
       </view>

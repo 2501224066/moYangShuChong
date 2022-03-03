@@ -165,6 +165,8 @@ page {
 }
 
 .box {
+  /* background-color: white; */
+
   padding: 50rpx 32rpx
 }
 

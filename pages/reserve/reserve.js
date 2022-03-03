@@ -7,6 +7,8 @@ import {
 
 Page({
   data: {
+    hiddenmodal:true,
+    id:'',
     nowY: '',
     nowM: '',
     nowD: '',
@@ -76,18 +78,49 @@ Page({
   },
 
   // 预约
-  async reserve(e) {
+ reserve(e) {
     if (!wx.$verifyLogin()) return
-    await reserve({
-      id: e.currentTarget.dataset.id,
+    // reserve({
+    //   id: e.currentTarget.dataset.id,
+    // })
+    // wx.showToast({
+    //   title: '操作成功',
+    //   icon: 'none'
+    // })
+    // this.getData()
+    // this.msg()
+    this.setData({
+      hiddenmodal: false,
+      id:e.currentTarget.dataset.id,
+   })
+  },
+
+  cancelM(e){
+    this.setData({
+       hiddenmodal: true,
+    })
+ },
+
+ confirmM(e) {
+   this.setData({
+      hiddenmodal: true,
+   })
+    reserve({
+      id: this.data.id,
     })
     wx.showToast({
       title: '操作成功',
       icon: 'none'
     })
-    this.getData()
+    setTimeout(() => {
+      this.getData()
+    }, 1000);
     this.msg()
-  },
+
+ },
+
+
+
 
   // 订阅
   msg() {
