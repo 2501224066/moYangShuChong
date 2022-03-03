@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "Navbar2": "/components/navbar2/navbar2"
+    "Navbar2": "/components/navbar2/navbar2",
+    "Play": "/components/play/play"
   },
   "navigationStyle": "custom"
 }

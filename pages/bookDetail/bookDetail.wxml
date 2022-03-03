@@ -55,7 +55,7 @@
     <!-- 绘本导读 -->
     <view class="box" wx:if="{{tab.index === 2}}">
       <video wx:if="{{detail.guideVideo && detail.guideVideo.length > 0}}" id="myVideo"
-        src="{{detail.guideVideo.length && detail.guideVideo[0].url}}" 	bindtimeupdate="videoTimeupdate"></video>
+        src="{{detail.guideVideo.length && detail.guideVideo[0].url}}" bindtimeupdate="videoimeupdate"></video>
       <view class="none" wx:else>
         <view class="img">
           <image src="/image/noData.png" mode="aspectFill"></image>

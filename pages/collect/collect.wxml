@@ -23,4 +23,10 @@
     </view>
     <view>暂无收藏～</view>
   </view>
+
+  <view class="audios" bindtap="audioPlay" wx:if="{{audio.length > 0}}">
+    <image src="/image/collectAudio.png" mode="aspectFill"></image>
+  </view>
 </view>
+
+<Play show="{{playerShow}}" small="{{small}}" bind:nowPlay="nowPlay"></Play>
