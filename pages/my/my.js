@@ -1,6 +1,5 @@
 import {
-  myInfo,
-  auth
+  myInfo
 } from "../../config/api"
 
 

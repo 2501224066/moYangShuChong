@@ -86,3 +86,17 @@ page {
   width: 270rpx;
   height: 292rpx;
 }
+
+.audios {
+  position: fixed;
+  right: 32rpx;
+  bottom: 10vh;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  padding: 24rpx;
+  box-sizing: border-box;
+  box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(0, 0, 0, 0.05);
+}

@@ -1,38 +1,60 @@
 import {
-  collectList
+  collectList,
+  collectAudioList
 } from '../../config/api'
 
 
 Page({
   data: {
     list: [],
-    page: {
-      num: 1,
-      size: 10
-    }
+    playerShow: false,
+    small: false,
+    nowPlayTitle: null,
+    audio: []
   },
 
-  onLoad() {
+  onShow() {
     this.getData()
+    this.getAudio()
   },
 
   // 获取数据
   async getData(add = false) {
-    let res = await collectList({
-      pageNum: this.data.page.num,
-      pageSize: this.data.page.size,
-    })
+    let res = await collectList({})
     this.setData({
-      list: add ? this.data.list.concat(res.data.list) : res.data.list
+      list: res.data.list
     })
   },
 
-  onReachBottom() {
-    this.data.page.num += 1
+  // 获取音乐
+  async getAudio() {
+    let res = await collectAudioList()
     this.setData({
-      page: this.data.page
+      audio: res.data
     })
-    this.getData(true)
+    wx.setStorageSync('audioList', res.data.reduce((init, val) => {
+      init.push({
+        audio: val.audio.url,
+        title: val.audio.name
+      })
+      return init
+    }, []))
+  },
+
+  // 播放音频
+  audioPlay() {
+    this.setData({
+      playerShow: true,
+      small: false
+    })
+  },
+
+  // 当前播放
+  nowPlay(obj) {
+    wx.setStorageSync('audioAfterPlay', this.data.nowPlayTitle)
+    this.setData({
+      nowPlayTitle: obj.detail.title
+    })
   },
 
   // 跳转

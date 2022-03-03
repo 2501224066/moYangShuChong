@@ -197,3 +197,12 @@ export function reserveHas(data, repair = '') {
     data: data
   })
 }
+
+// 收藏包含的音乐
+export function collectAudioList(data, repair = '') {
+  return common.go({
+    method: 'get',
+    url: '/user/audioList' + repair,
+    data: data
+  })
+}
