@@ -107,12 +107,14 @@ page {
   height: 168rpx;
   border-radius: 16rpx;
   overflow: hidden;
+  margin-top:-10rpx;
   background: #fff;
 }
 
 .list>.item>.up>.right {
   box-sizing: border-box;
   font-size: 32rpx;
+  margin-left:20rpx;
 }
 
 .list>.item>.up>.right>view {

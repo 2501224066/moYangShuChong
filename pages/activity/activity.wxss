@@ -127,11 +127,13 @@ page {
   border-radius: 16rpx;
   overflow: hidden;
   background: #fff;
+  margin-top:-10rpx;
 }
 
 .list>.item>.up>.right {
   box-sizing: border-box;
   font-size: 32rpx;
+  margin-left:20rpx;
 }
 
 .list>.item>.up>.right>view {
