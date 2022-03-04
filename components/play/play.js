@@ -38,6 +38,7 @@ Component({
     listShow: false, // 音频列表显示
     touchAfterNow: 0, // 拖动前的now
     touchAfterX: 0, // 拖动前的位置
+    collect:false,
   },
   lifetimes: {
     detached() {
@@ -145,7 +146,7 @@ Component({
       }
 
       
-      if (this.audioCtx.currentTime >= 30) {
+      if (this.audioCtx.currentTime >= 90) {
         this.audioCtx.seek(0)
         this.audioCtx.pause()
         this.setData({
@@ -291,5 +292,12 @@ Component({
       this.audioCtx.seek(this.data.now)
       this.audioCtx.play()
     },
+
+    collect(){
+        this.setData({
+          collect:!this.data.collect
+        })
+    }
+  
   }
 })

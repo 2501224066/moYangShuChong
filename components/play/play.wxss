@@ -249,3 +249,14 @@
 .active {
   color: #F3981C !important;
 }
+
+.sharebox{
+  position: relative;
+  text-align: right;
+  left: 320rpx;
+}
+
+.button_image{
+    height: 50rpx;
+    width: 50rpx;
+}

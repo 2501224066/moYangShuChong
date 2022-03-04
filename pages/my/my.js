@@ -38,7 +38,7 @@ Page({
   async getData() {
     let res = await myInfo()
     this.setData({
-      allNum: res.data.frequency,
+      allNum: res.data.frequency-res.data.useTimes,
       joinNum: res.data.useTimes,
       endTime: res.data.cardEndTime
     })

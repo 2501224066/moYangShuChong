@@ -12,11 +12,19 @@
 
     <view class="content">
       <view>
-        <view class="name">{{detail.bookName}}</view>
+        <view class="name">{{detail.bookName}}</view>  
+        
         <view>作者：{{detail.bookAuthor}}</view>
       </view>
-      <view class="follow" bindtap="unCollect" wx:if="{{detail.isColl}}">已收藏</view>
-      <view class="follow" bindtap="collect" wx:else>收藏</view>
+      
+
+      <view class="sharebox">
+           <view class="follow" bindtap="unCollect" wx:if="{{detail.isColl}}">已收藏</view>
+           <view class="follow" bindtap="collect" wx:else>收藏</view>
+          <image class ="button_image" src="/image/share.png" >
+              </image>
+           <button class="share"  open-type="share"></button>
+       </view>
     </view>
   </view>
 

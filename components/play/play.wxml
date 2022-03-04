@@ -40,6 +40,11 @@
       </image>
     </view>
 
+    <view class="sharebox">
+      <image class ="button_image" src="/image/uncollect.png"  bindtap="collect" wx:if="{{!collect}}"></image>
+      <image class ="button_image" src="/image/collected.png"  bindtap="collect" wx:else></image>
+    </view>
+    
     <view class="line">
       <view class="time">{{util.sToI(now)}}</view>
       <view class="way">

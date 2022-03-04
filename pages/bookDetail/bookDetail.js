@@ -35,7 +35,7 @@ Page({
     if (wx.getStorageSync('loginStatus')) {
       return
     }
-    if (e.detail.currentTime > 30) {
+    if (e.detail.currentTime > 90) {
       this.data.videoContext.seek(0)
       this.data.videoContext.stop()
       let that = this
@@ -144,5 +144,14 @@ Page({
     this.setData({
       nowPlayTitle: obj.detail.title
     })
-  }
+  },
+  //分享
+  onShareAppMessage: function () {
+    return {
+      title: this.data.detail.bookName,
+      path:"/pages/bookDetail/bookDetail"+"?id="+this.data.detail.id
+    }
+  },
 })
+
+

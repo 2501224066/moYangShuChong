@@ -114,9 +114,8 @@ Page({
     })
     setTimeout(() => {
       this.getData()
+      this.msg()
     }, 1000);
-    this.msg()
-
  },
 
 

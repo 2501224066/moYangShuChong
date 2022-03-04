@@ -60,6 +60,38 @@ page {
   -webkit-box-orient: vertical;
 }
 
+
+
+
+.top>.teacher {
+  height: 108rpx;
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+  margin-top: -10rpx;
+  margin-bottom:10rpx
+
+}
+
+
+.top>.teacher>.img {
+  width: 80rpx;
+  height: 80rpx;
+  border: 1px solid #FFFFFF;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 0rpx;
+  flex-shrink: 0;
+  position: fixed;
+
+}
+
+.top>.teacher>.lable {
+  color:white;
+  height: 72rpx;
+  margin-left: 100rpx;
+}
+
 .top>.man {
   height: 108rpx;
   background: rgb(0, 0, 0, .3);
@@ -67,7 +99,9 @@ page {
   display: flex;
   overflow-x: auto;
   align-items: center;
+  
 }
+
 
 .top>.man>.label {
   width: 56rpx;
@@ -90,7 +124,7 @@ page {
 
 .tab {
   width: 686rpx;
-  margin: -70rpx 32rpx 0 32rpx;
+  margin: 0rpx 32rpx 0 32rpx;
   height: 140rpx;
   background: #FFFFFF;
   border-radius: 32rpx;

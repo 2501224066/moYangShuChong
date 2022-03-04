@@ -7,12 +7,23 @@
       <image style="height:680rpx"  src="{{detail.bookImg[0].url}}" ></image>
       <!--mode="widthFix"-->
     </view>
+
+ 
+
     <view class="content">
       <view class="name">{{detail.subject}}</view>
       <view class="memo">
-        {{detail.readInfo}}
+        {{detail.readInfo}} 
       </view>
     </view>
+
+    <view class="teacher" wx:if="{{detail.teacherIcon.length > 0||detail.teacherIntroduce}}">
+     <view class="img">
+       <image src="{{detail.teacherIcon[0].url}}" mode="aspectFill"></image>
+     </view>
+     <view class="lable">{{detail.teacherIntroduce}}</view>
+   </view>
+
     <view class="man" wx:if="{{detail.icon.length > 0}}">
       <view class="label">预约会员</view>
       <view class="img" wx:for="{{detail.icon}}" wx:key="index">
@@ -27,7 +38,6 @@
   </view>
 
   <view class="footer">
-
     <!-- 活动目标 -->
     <view class="box" wx:if="{{tab.index === 0}}">
       <view class="label">学习目标</view>
