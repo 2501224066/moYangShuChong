@@ -172,13 +172,13 @@
 }
 
 .player>.action>.img {
-  width: 72rpx;
-  height: 72rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .player>.action>.img1 {
-  width: 116rpx;
-  height: 116rpx;
+  width: 120rpx;
+  height: 120rpx;
 }
 
 .player>.list {
@@ -250,13 +250,13 @@
   color: #F3981C !important;
 }
 
-.sharebox{
+.sharebox {
   position: relative;
   text-align: right;
   left: 320rpx;
 }
 
-.button_image{
-    height: 50rpx;
-    width: 50rpx;
+.button_image {
+  height: 50rpx;
+  width: 50rpx;
 }

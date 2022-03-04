@@ -4,8 +4,7 @@
 <view wx:if="{{show}}">
 
   <!-- 头部导航 -->
-  <view wx:if="{{ !small }}" class="navbar"
-    style="height:{{navHeight}}px; padding-top:{{navTop}}px;">
+  <view wx:if="{{ !small }}" class="navbar" style="height:{{navHeight}}px; padding-top:{{navTop}}px;">
     <view class="icon" style="background: rgba(0, 0, 0, 0.2);border: 1rpx solid rgba(255, 255, 255, 0.44);">
       <view class="img">
         <image src="/image/left.png" mode="aspectFill" bindtap="playerBack"></image>
@@ -41,10 +40,10 @@
     </view>
 
     <view class="sharebox">
-      <image class ="button_image" src="/image/uncollect.png"  bindtap="collect" wx:if="{{!collect}}"></image>
-      <image class ="button_image" src="/image/collected.png"  bindtap="collect" wx:else></image>
+      <image class="button_image" src="/image/uncollect.png" bindtap="collect" wx:if="{{!collect}}"></image>
+      <image class="button_image" src="/image/collected.png" bindtap="collect" wx:else></image>
     </view>
-    
+
     <view class="line">
       <view class="time">{{util.sToI(now)}}</view>
       <view class="way">
@@ -59,7 +58,9 @@
 
     <view class="action">
       <view class="img" bindtap="setPlayType">
-        <image src="{{playType === 1 ? '/image/player1.png' : '/image/player2.png'}}" mode="aspectFill"></image>
+        <image
+          src="{{playType === 1 ? '/image/player1.png' : playType === 2 ? '/image/player2.png' : '/image/player7.png'}}"
+          mode="aspectFill"></image>
       </view>
       <view class="img" bindtap="before">
         <image src="/image/player3.png" mode="aspectFill"></image>

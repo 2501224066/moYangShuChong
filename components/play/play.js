@@ -30,7 +30,7 @@ Component({
     navTop: 0,
     list: [], // 音频列表
     index: 0, // 当前播放
-    playType: 2, // 单曲/循环
+    playType: 2, // 1.单曲, 2.循环, 3.随机
     now: 0, // 当前进度
     long: 0, // 总进度
     playStatus: false, // 是否播放
@@ -38,7 +38,7 @@ Component({
     listShow: false, // 音频列表显示
     touchAfterNow: 0, // 拖动前的now
     touchAfterX: 0, // 拖动前的位置
-    collect:false,
+    collect: false,
   },
   lifetimes: {
     detached() {
@@ -123,11 +123,8 @@ Component({
       // 监听播放结束
       this.audioCtx.onEnded(() => {
         console.log('[audio] play end')
-        if (this.data.playType === 1) {
-          this.audioCtx.play()
-        } else {
-          this.after()
-        }
+
+        this.playeByType()
       })
       this.audioCtx.onTimeUpdate(() => {
         this.unLoginStint()
@@ -139,13 +136,30 @@ Component({
       if (reset) this.audioCtx.seek(0)
     },
 
+    // 按模式继续播放
+    playeByType() {
+      if (this.data.playType === 1) {
+        this.audioCtx.play()
+        return
+      }
+      if (this.data.playType === 2) {
+        this.after()
+        return
+      }
+      if (this.data.playType === 3) {
+        if (this.data.list.length == 1) {
+          this.audioCtx.play()
+          return
+        }
+        this.random()
+      }
+    },
+
     // 未登录限制
     unLoginStint() {
       if (wx.getStorageSync('loginStatus')) {
         return
       }
-
-      
       if (this.audioCtx.currentTime >= 90) {
         this.audioCtx.seek(0)
         this.audioCtx.pause()
@@ -192,6 +206,22 @@ Component({
       this.outData()
     },
 
+    // 随机一首
+    random() {
+      this.audioCtx.pause()
+      let arr = Array.apply(null, {
+        length: this.data.list.length - 1
+      }).map((v, i) => i)
+      arr.splice(this.data.index, 1)
+      let index = Math.round(Math.random() * arr.length)
+      this.setData({
+        index: index
+      })
+      this.audioCtx.src = this.data.list[this.data.index].audio
+      this.audioCtx.play()
+      this.outData()
+    },
+
     // 切换音频
     checkout(e) {
       this.audioCtx.pause()
@@ -218,7 +248,7 @@ Component({
     // 切换播放模式
     setPlayType() {
       this.setData({
-        playType: this.data.playType === 1 ? 2 : 1
+        playType: this.data.playType === 1 ? 2 : (this.data.playType == 2 ? 3 : 1)
       })
     },
 
@@ -293,11 +323,12 @@ Component({
       this.audioCtx.play()
     },
 
-    collect(){
-        this.setData({
-          collect:!this.data.collect
-        })
+    // 设置收藏
+    collect() {
+      this.setData({
+        collect: !this.data.collect
+      })
     }
-  
+
   }
 })
