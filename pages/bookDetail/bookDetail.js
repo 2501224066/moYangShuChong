@@ -102,6 +102,8 @@ Page({
     res.data.bookAudio.map((item) => {
       item.title = item.name
       item.audio = item.url
+      item.bookId = id
+      item.collType = item.collType
     })
     this.setData({
       detail: res.data
@@ -124,6 +126,7 @@ Page({
     } else {
       arr = this.data.detail.bookAudio // 全部
     }
+    wx.setStorageSync('index', 0)
     let audioList = arr.concat(wx.getStorageSync('audioList') ? wx.getStorageSync('audioList') : [])
     // 去重
     let obj = {};

@@ -43,7 +43,7 @@
     </view>
     <view class="list" wx:if="{{tab.index === 0 && detail.bookAudio.length > 0}}">
       <view class="item" wx:for="{{detail.bookAudio}}" wx:key="index" bindtap="add" data-index="{{index}}">
-        <view>{{index + 1}}</view>
+        <view class="{{nowPlayTitle == item.title ? 'active' : ''}}">{{index + 1}}</view>
         <view class="name {{nowPlayTitle == item.title ? 'active' : ''}}">{{item.title}}</view>
       </view>
     </view>
