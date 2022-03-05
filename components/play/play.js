@@ -1,5 +1,6 @@
 import {
-  audioCollection,cancelCollectionVoice
+  audioCollection,
+  cancelCollectionVoice
 } from "../../config/api"
 
 
@@ -65,7 +66,7 @@ Component({
         return
       }
       this.firstPlay()
-      
+
     },
 
     // 播放器返回
@@ -96,6 +97,9 @@ Component({
     // 清除定时器
     removeTiming() {
       clearInterval(this.data.timing)
+      this.setData({
+        timing: null
+      })
     },
 
     // 跳转
@@ -112,7 +116,7 @@ Component({
       this.setData({
         index: index
       })
-      
+
       let reset = false;
       if (this.data.list[this.data.index] && this.data.list[this.data.index].audio != newList[this.data.index].audio) {
         reset = true
@@ -126,9 +130,9 @@ Component({
       this.audioCtx.src = this.data.list[this.data.index].audio
 
       this.setData({
-        collect:this.data.list[this.data.index].collType
+        collect: this.data.list[this.data.index].collType
       })
- 
+
       this.audioCtx.play()
       this.outData()
       this.audioCtx.seek(this.data.now)
@@ -220,7 +224,7 @@ Component({
       })
       this.audioCtx.src = this.data.list[this.data.index].audio
       this.setData({
-        collect:this.data.list[this.data.index].collType
+        collect: this.data.list[this.data.index].collType
       })
       this.audioCtx.play()
       this.outData()
@@ -238,7 +242,7 @@ Component({
       })
       this.audioCtx.src = this.data.list[this.data.index].audio
       this.setData({
-        collect:this.data.list[this.data.index].collType
+        collect: this.data.list[this.data.index].collType
       })
       this.audioCtx.play()
       this.outData()
@@ -258,7 +262,7 @@ Component({
       })
       this.audioCtx.src = this.data.list[this.data.index].audio
       this.setData({
-        collect:this.data.list[this.data.index].collType
+        collect: this.data.list[this.data.index].collType
       })
       this.audioCtx.play()
       this.outData()
@@ -272,7 +276,7 @@ Component({
       })
       this.audioCtx.src = this.data.list[this.data.index].audio
       this.setData({
-        collect:this.data.list[this.data.index].collType
+        collect: this.data.list[this.data.index].collType
       })
       this.audioCtx.play()
       this.outData()
@@ -371,50 +375,52 @@ Component({
     // 设置收藏
     collect() {
 
-      if (this.data.collect!=1) {
+      if (this.data.collect != 1) {
         this.collected()
-        
-      }else{
+
+      } else {
         this.uncollect()
-        this.triggerEvent('myevent',{params: this.data.collect},{})
+        this.triggerEvent('myevent', {
+          params: this.data.collect
+        }, {})
       }
     },
 
-      // 收藏
-      async collected() {
-        if (!wx.$verifyLogin()) return
-        let item =  this.data.list[this.data.index]
-        await audioCollection({
-          bookId: item.bookId,
-          name: item.title,
-          url: item.audio
-        })
-        this.setData({
-          collect: 1
-        })
-        wx.showToast({
-          title: '收藏成功',
-          icon: 'none'
-        })
-      },
+    // 收藏
+    async collected() {
+      if (!wx.$verifyLogin()) return
+      let item = this.data.list[this.data.index]
+      await audioCollection({
+        bookId: item.bookId,
+        name: item.title,
+        url: item.audio
+      })
+      this.setData({
+        collect: 1
+      })
+      wx.showToast({
+        title: '收藏成功',
+        icon: 'none'
+      })
+    },
 
-       // 取消收藏
-      async uncollect() {
-        if (!wx.$verifyLogin()) return
-        
-        let item =  this.data.list[this.data.index]
-        await cancelCollectionVoice({
-          bookId: item.bookId,
-          name: item.title,
-          url: item.audio
-        })
-        this.setData({
-          collect: 0
-        })
-        wx.showToast({
-          title: '取消成功',
-          icon: 'none'
-        })
-      },
+    // 取消收藏
+    async uncollect() {
+      if (!wx.$verifyLogin()) return
+
+      let item = this.data.list[this.data.index]
+      await cancelCollectionVoice({
+        bookId: item.bookId,
+        name: item.title,
+        url: item.audio
+      })
+      this.setData({
+        collect: 0
+      })
+      wx.showToast({
+        title: '取消成功',
+        icon: 'none'
+      })
+    },
   }
 })
