@@ -72,6 +72,9 @@ Component({
 
     // 开始定时器
     setTiming() {
+      if (this.data.timing) {
+        return
+      }
       this.setData({
         timing: setInterval(() => {
           this.setData({
@@ -186,6 +189,10 @@ Component({
 
     // 上一首
     before() {
+      if (this.data.playType == 3) {
+        this.random()
+        return
+      }
       this.audioCtx.pause()
       this.setData({
         index: this.data.index === 0 ? this.data.list.length - 1 : this.data.index - 1
@@ -197,6 +204,10 @@ Component({
 
     // 下一首
     after() {
+      if (this.data.playType == 3) {
+        this.random()
+        return
+      }
       this.audioCtx.pause()
       this.setData({
         index: this.data.index === this.data.list.length - 1 ? 0 : this.data.index + 1
