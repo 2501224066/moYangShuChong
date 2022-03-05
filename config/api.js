@@ -72,6 +72,8 @@ export function collect(data, repair = '') {
   })
 }
 
+
+
 // 取消收藏
 export function unCollect(data, repair = '') {
   return common.go({
@@ -80,6 +82,28 @@ export function unCollect(data, repair = '') {
     data: data
   })
 }
+
+// 添加音频收藏
+export function audioCollection(data, repair = '') {
+  return common.go({
+    method: 'post',
+    url: '/voice/addAudioCollection' + repair,
+    data: data
+  })
+}
+
+// 取消音频收藏
+export function cancelCollectionVoice(data, repair = '') {
+  return common.go({
+    method: 'post',
+    url: '/voice/cancel' + repair,
+    data: data
+  })
+}
+
+
+
+
 
 // 我的收藏
 export function collectList(data, repair = '') {
@@ -201,7 +225,7 @@ export function reserveHas(data, repair = '') {
 // 收藏包含的音乐
 export function collectAudioList(data, repair = '') {
   return common.go({
-    method: 'get',
+    method: 'post',
     url: '/user/audioList' + repair,
     data: data
   })

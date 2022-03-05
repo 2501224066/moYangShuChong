@@ -18,7 +18,9 @@
     "pages/reserveDetail/reserveDetail",
     "pages/setting/setting",
     "pages/web/web",
-    "pages/authInfo/authInfo"
+    "pages/authInfo/authInfo",
+    "pages/music/music"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,7 +32,8 @@
     "custom": true,
     "selectedColor": "#F3981C",
     "color": "#999",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "墨洋之声",
         "iconPath": "/image/index.png",

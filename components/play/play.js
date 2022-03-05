@@ -1,3 +1,8 @@
+import {
+  audioCollection,cancelCollectionVoice
+} from "../../config/api"
+
+
 Component({
   properties: {
     show: {
@@ -38,7 +43,7 @@ Component({
     listShow: false, // 音频列表显示
     touchAfterNow: 0, // 拖动前的now
     touchAfterX: 0, // 拖动前的位置
-    collect: false,
+    collect: 0,
   },
   lifetimes: {
     detached() {
@@ -47,6 +52,9 @@ Component({
     }
   },
   methods: {
+
+
+
     // 初始化数据
     initData() {
       this.setData({
@@ -57,6 +65,7 @@ Component({
         return
       }
       this.firstPlay()
+      
     },
 
     // 播放器返回
@@ -95,6 +104,12 @@ Component({
     firstPlay() {
       // 判断是否从头播
       let newList = wx.getStorageSync('audioList') ? wx.getStorageSync('audioList') : []
+      let index = wx.getStorageSync('index') ? wx.getStorageSync('index') : 0
+
+      this.setData({
+        index: index
+      })
+      
       let reset = false;
       if (this.data.list[this.data.index] && this.data.list[this.data.index].audio != newList[this.data.index].audio) {
         reset = true
@@ -103,8 +118,14 @@ Component({
       this.setData({
         list: newList
       })
+
       this.audioCtx = wx.createInnerAudioContext()
       this.audioCtx.src = this.data.list[this.data.index].audio
+
+      this.setData({
+        collect:this.data.list[this.data.index].collType
+      })
+ 
       this.audioCtx.play()
       this.outData()
       this.audioCtx.seek(this.data.now)
@@ -191,6 +212,9 @@ Component({
         index: this.data.index === 0 ? this.data.list.length - 1 : this.data.index - 1
       })
       this.audioCtx.src = this.data.list[this.data.index].audio
+      this.setData({
+        collect:this.data.list[this.data.index].collType
+      })
       this.audioCtx.play()
       this.outData()
     },
@@ -202,12 +226,16 @@ Component({
         index: this.data.index === this.data.list.length - 1 ? 0 : this.data.index + 1
       })
       this.audioCtx.src = this.data.list[this.data.index].audio
+      this.setData({
+        collect:this.data.list[this.data.index].collType
+      })
       this.audioCtx.play()
       this.outData()
     },
 
     // 随机一首
     random() {
+      console.log("播放")
       this.audioCtx.pause()
       let arr = Array.apply(null, {
         length: this.data.list.length - 1
@@ -218,6 +246,9 @@ Component({
         index: index
       })
       this.audioCtx.src = this.data.list[this.data.index].audio
+      this.setData({
+        collect:this.data.list[this.data.index].collType
+      })
       this.audioCtx.play()
       this.outData()
     },
@@ -229,6 +260,9 @@ Component({
         index: e.currentTarget.dataset.index,
       })
       this.audioCtx.src = this.data.list[this.data.index].audio
+      this.setData({
+        collect:this.data.list[this.data.index].collType
+      })
       this.audioCtx.play()
       this.outData()
     },
@@ -325,10 +359,51 @@ Component({
 
     // 设置收藏
     collect() {
-      this.setData({
-        collect: !this.data.collect
-      })
-    }
 
+      if (this.data.collect!=1) {
+        this.collected()
+        
+      }else{
+        this.uncollect()
+        this.triggerEvent('myevent',{params: this.data.collect},{})
+      }
+    },
+
+      // 收藏
+      async collected() {
+        if (!wx.$verifyLogin()) return
+        let item =  this.data.list[this.data.index]
+        await audioCollection({
+          bookId: item.bookId,
+          name: item.title,
+          url: item.audio
+        })
+        this.setData({
+          collect: 1
+        })
+        wx.showToast({
+          title: '收藏成功',
+          icon: 'none'
+        })
+      },
+
+       // 取消收藏
+      async uncollect() {
+        if (!wx.$verifyLogin()) return
+        
+        let item =  this.data.list[this.data.index]
+        await cancelCollectionVoice({
+          bookId: item.bookId,
+          name: item.title,
+          url: item.audio
+        })
+        this.setData({
+          collect: 0
+        })
+        wx.showToast({
+          title: '取消成功',
+          icon: 'none'
+        })
+      },
   }
 })

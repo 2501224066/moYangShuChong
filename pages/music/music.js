@@ -14,15 +14,19 @@ Page({
   },
 
   onShow() {
-    this.getData()
     this.getAudio()
   },
 
-  // 获取数据
-  async getData(add = false) {
-    let res = await collectList({})
+  myevent(e) {
+    this.getAudio()
+  },
+
+  // 添加
+  add(e) {
+    wx.setStorageSync('index', e.currentTarget.dataset.index)
     this.setData({
-      list: res.data.list
+      playerShow: true,
+      small: false
     })
   },
 
@@ -64,6 +68,7 @@ Page({
 
   // 跳转
   to(e) {
+
     wx.$dump(e)
   },
 })

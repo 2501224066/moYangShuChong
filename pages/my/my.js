@@ -18,7 +18,12 @@ Page({
       img: "/image/my-icon2.png",
       label: "我的收藏",
       link: "/pages/collect/collect"
-    }, {
+    },  {
+      img: "/image/music.png",
+      label: "我的音频",
+      link: "/pages/music/music"
+    }, 
+    {
       img: "/image/my-icon3.png",
       label: "我的消息",
       link: "/pages/notice/notice"

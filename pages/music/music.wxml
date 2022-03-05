@@ -1,0 +1,29 @@
+
+  <view class="container">
+     <Navbar2 text="我的音频" num="{{audio.length}}" bg="#ededed"></Navbar2>
+    <!-- 绘本音频 -->
+    <!-- <view class="title" bindtap="add" wx:if="{{audio.length > 0}}"> -->
+      <!-- <view class="img">
+        <image src="/image/play.png" mode="aspectFill"></image>
+      </view> -->
+      <!-- <view>播放全部<span>({{audio.length}})</span></view> -->
+    <!-- </view> -->
+    <view class="list" wx:if="{{audio.length > 0}}">
+      <view class="item" wx:for="{{audio}}" wx:key="index" bindtap="add" data-index="{{index}}">
+        <view class="{{nowPlayTitle == item.audio.name ? 'active' : ''}}">{{index + 1}}</view>
+        <view class="name {{nowPlayTitle == item.audio.name ? 'active' : ''}}">{{item.audio.name}}</view>
+      </view>
+    </view>
+    <view class="none" wx:if="{{audio.length == 0}}">
+      <view class="img">
+        <image src="/image/noData.png" mode="aspectFill"></image>
+      </view>
+      <view style="margin-top:20rpx">暂无收藏音频～</view>
+    </view>
+    <view class="audios" bindtap="audioPlay" wx:if="{{audio.length > 0}}">
+    <image src="/image/collectAudio.png" mode="aspectFill"></image>
+  </view>
+</view>
+
+<Play  bindmyevent="myevent"  show="{{playerShow}}" small="{{small}}" bind:nowPlay="nowPlay"></Play>
+
