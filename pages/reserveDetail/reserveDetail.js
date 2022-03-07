@@ -84,9 +84,9 @@ async confirmM(e) {
     title: '操作成功',
     icon: 'none'
   })
-  setTimeout(() => {
-    this.getData()
-  }, 1000);
+
+  this.getData()
+
   this.msg()
 },
 
