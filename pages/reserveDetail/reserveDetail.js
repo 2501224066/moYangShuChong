@@ -7,8 +7,8 @@ import {
 Page({
   data: {
     id: null,
-    itemid:null,
-    hiddenmodal:true,
+    itemid: null,
+    hiddenmodal: true,
     tab: {
       index: 0,
       list: ["活动目标", "伴读介绍", "预约规则"],
@@ -49,46 +49,46 @@ Page({
   // 预约
   async reserve(e) {
     if (!wx.$verifyLogin()) return
-  //   await reserve({
-  //     id: e.currentTarget.dataset.id,
-  //   })
-  //   wx.showToast({
-  //     title: '操作成功',
-  //     icon: 'none'
-  //   })
-  //   this.getData()
-  //   this.msg()
-  // },
+    //   await reserve({
+    //     id: e.currentTarget.dataset.id,
+    //   })
+    //   wx.showToast({
+    //     title: '操作成功',
+    //     icon: 'none'
+    //   })
+    //   this.getData()
+    //   this.msg()
+    // },
 
 
-  this.setData({
-    hiddenmodal: false,
-    itemid:e.currentTarget.dataset.id,
- })
-},
+    this.setData({
+      hiddenmodal: false,
+      itemid: e.currentTarget.dataset.id,
+    })
+  },
 
-cancelM(e){
-  this.setData({
-     hiddenmodal: true,
-  })
-},
+  cancelM(e) {
+    this.setData({
+      hiddenmodal: true,
+    })
+  },
 
-async confirmM(e) {
- this.setData({
-    hiddenmodal: true,
- })
- await reserve({
-    id: this.data.itemid,
-  })
-  wx.showToast({
-    title: '操作成功',
-    icon: 'none'
-  })
+  async confirmM(e) {
+    this.setData({
+      hiddenmodal: true,
+    })
+    await reserve({
+      id: this.data.itemid,
+    })
+    wx.showToast({
+      title: '操作成功',
+      icon: 'none'
+    })
 
-  this.getData()
+    this.getData()
 
-  this.msg()
-},
+    this.msg()
+  },
 
   // 订阅
   msg() {
@@ -96,7 +96,7 @@ async confirmM(e) {
       tmplIds: ['O5CrpSwaqgJyp2r1b2hoR-q4BQUzShuBCq3xg7fpWtI', 'dtfQ3lsZ_yyoKl6rkOHR9IiZugBtzAXxAP5WPjwsQng', 'gpaC9pYk0ur4U6EkH21FEjO99rbNA3hcVAfZaTDL5Og'],
       success() {
         wx.showToast({
-          title: '订阅成功',
+          title: '操作完成',
           icon: 'none'
         })
       }

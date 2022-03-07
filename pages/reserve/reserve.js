@@ -7,8 +7,8 @@ import {
 
 Page({
   data: {
-    hiddenmodal:true,
-    id:'',
+    hiddenmodal: true,
+    id: '',
     nowY: '',
     nowM: '',
     nowD: '',
@@ -78,7 +78,7 @@ Page({
   },
 
   // 预约
- reserve(e) {
+  reserve(e) {
     if (!wx.$verifyLogin()) return
     // reserve({
     //   id: e.currentTarget.dataset.id,
@@ -91,34 +91,30 @@ Page({
     // this.msg()
     this.setData({
       hiddenmodal: false,
-      id:e.currentTarget.dataset.id,
-   })
+      id: e.currentTarget.dataset.id,
+    })
   },
 
-  cancelM(e){
+  cancelM(e) {
     this.setData({
-       hiddenmodal: true,
-    })
- },
-
- confirmM(e) {
-   this.setData({
       hiddenmodal: true,
-   })
-    reserve({
+    })
+  },
+
+  async confirmM(e) {
+    this.setData({
+      hiddenmodal: true,
+    })
+    await reserve({
       id: this.data.id,
     })
     wx.showToast({
       title: '操作成功',
       icon: 'none'
     })
-
-    this.getData()
+    await this.getData()
     this.msg()
- },
-
-
-
+  },
 
   // 订阅
   msg() {
@@ -126,7 +122,7 @@ Page({
       tmplIds: ['O5CrpSwaqgJyp2r1b2hoR-q4BQUzShuBCq3xg7fpWtI', 'dtfQ3lsZ_yyoKl6rkOHR9IiZugBtzAXxAP5WPjwsQng', 'gpaC9pYk0ur4U6EkH21FEjO99rbNA3hcVAfZaTDL5Og'],
       success() {
         wx.showToast({
-          title: '订阅成功',
+          title: '操作完成',
           icon: 'none'
         })
       }
@@ -136,22 +132,23 @@ Page({
   // 取消
   async cancel(e) {
     if (!wx.$verifyLogin()) return
+    let that = this
     await new Promise((resolve) => {
       wx.showModal({
         title: '确定取消活动？',
-        content:'如果距离开课时间不满6小时，将被扣除伴读时光卡次数',
-        cancelText:'取消',
-        confirmText:'确认',
+        content: '如果距离开课时间不满6小时，将被扣除伴读时光卡次数',
+        cancelText: '取消',
+        confirmText: '确认',
         success(res) {
           if (res.confirm) {
-             cancel({
+            cancel({
               id: e.currentTarget.dataset.id,
             })
             wx.showToast({
               title: '操作成功',
               icon: 'none'
             })
-            this.getData()
+            that.getData()
           }
         }
       })
