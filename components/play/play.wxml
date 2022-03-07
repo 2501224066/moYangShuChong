@@ -83,7 +83,7 @@
         <view class="title">全部音频<span>({{list.length}})</span></view>
         <view class="box">
           <view class="item" wx:for="{{list}}" wx:key="index" wx:for-index="i" bindtap="checkout" data-index="{{i}}">
-            <view>{{i + 1}}</view>
+            <view class="{{index === i ? 'active' : ''}}">{{i + 1}}</view>
             <view class="name {{index === i ? 'active' : ''}}">{{item.title}}</view>
           </view>
         </view>

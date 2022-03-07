@@ -114,8 +114,8 @@ Page({
     })
     setTimeout(() => {
       this.getData()
-      this.msg()
     }, 1000);
+    this.msg()
  },
 
 
@@ -124,7 +124,7 @@ Page({
   // 订阅
   msg() {
     wx.requestSubscribeMessage({
-      tmplIds: ['O5CrpSwaqgJyp2r1b2hoR-q4BQUzShuBCq3xg7fpWtI', 'dtfQ3lsZ_yyoKl6rkOHR9IiZugBtzAXxAP5WPjwsQng', 'gpaC9pYk0ur4U6EkH21FEp6B76KOSX7uL9ZTJBYVO3E'],
+      tmplIds: ['O5CrpSwaqgJyp2r1b2hoR-q4BQUzShuBCq3xg7fpWtI', 'dtfQ3lsZ_yyoKl6rkOHR9IiZugBtzAXxAP5WPjwsQng', 'gpaC9pYk0ur4U6EkH21FEjO99rbNA3hcVAfZaTDL5Og'],
       success() {
         wx.showToast({
           title: '订阅成功',
@@ -137,14 +137,26 @@ Page({
   // 取消
   async cancel(e) {
     if (!wx.$verifyLogin()) return
-    await cancel({
-      id: e.currentTarget.dataset.id,
+    await new Promise((resolve) => {
+      wx.showModal({
+        title: '确定取消活动？',
+        content:'如果距离开课时间不满6小时，将被扣除伴读时光卡次数',
+        cancelText:'取消',
+        confirmText:'确认',
+        success(res) {
+          if (res.confirm) {
+             cancel({
+              id: e.currentTarget.dataset.id,
+            })
+            wx.showToast({
+              title: '操作成功',
+              icon: 'none'
+            })
+            this.getData()
+          }
+        }
+      })
     })
-    wx.showToast({
-      title: '操作成功',
-      icon: 'none'
-    })
-    this.getData()
   },
 
   // 切换地区
