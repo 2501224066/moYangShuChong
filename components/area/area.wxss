@@ -12,7 +12,7 @@
 }
 
 .area>.item {
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: 400;
   color: #333333;
   line-height: 44px;

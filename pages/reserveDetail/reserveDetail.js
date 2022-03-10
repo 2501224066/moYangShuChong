@@ -106,13 +106,46 @@ Page({
   // 取消
   async cancel(e) {
     if (!wx.$verifyLogin()) return
-    await cancel({
-      id: e.currentTarget.dataset.id,
+    let that = this
+      wx.showModal({
+        title: '确定取消活动？',
+        content: '如果距离开课时间不满6小时，将被扣除伴读时光卡次数哦~',
+        cancelText: '取消',
+        confirmText: '确认',
+        success(res) {
+          if (res.confirm) {
+            //  cancel({
+            //   id: e.currentTarget.dataset.id,
+            // })
+            // that.getData()
+
+            // wx.showToast({
+            //   title: '操作成功',
+            //   icon: 'none'
+            // })
+            let obj = {
+              id: e.currentTarget.dataset.id
+            }
+            cancel(obj).then(res => {
+              that.getData();
+               wx.showToast({
+                title: '操作成功',
+                icon: 'none'
+              })
+            })
+          }
+        }
     })
-    wx.showToast({
-      title: '操作成功',
-      icon: 'none'
-    })
-    this.getData()
+
+
+
+    // await cancel({
+    //   id: e.currentTarget.dataset.id,
+    // })
+    // wx.showToast({
+    //   title: '操作成功',
+    //   icon: 'none'
+    // })
+    // this.getData()
   },
 })

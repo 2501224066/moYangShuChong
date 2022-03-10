@@ -26,21 +26,40 @@ App({
     wx.setStorageSync('tabbarIndex', 0)
     wx.setStorageSync('areaList', [{
       id: 0,
-      name: '福田馆',
+      name: '福田侨香馆',
     }, {
       id: 1,
-      name: '罗湖馆',
+      name: '南山太古城馆',
     }, {
       id: 2,
-      name: '龙华馆',
+      name: '南山星海名城馆',
     }, {
       id: 3,
-      name: '宝安馆',
+      name: '龙华AT MALL馆',
     }, {
       id: 4,
-      name: '南山馆'
-    }])
+      name: '宝安宏发馆'
+    },
+    {
+      id: 5,
+      name: '罗湖翠竹馆'
+    },
+    {
+      id: 6,
+      name: '南京建邺馆'
+    },
+    {
+      id: 7,
+      name: '南宁匹格布'
+    },
+    {
+      id: 8,
+      name: '珠海中珠馆'
+    },
+  ])
   },
+
+ 
 
   // 版本更新
   update() {
