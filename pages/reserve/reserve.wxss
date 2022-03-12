@@ -107,14 +107,14 @@ page {
   height: 168rpx;
   border-radius: 16rpx;
   overflow: hidden;
-  margin-top:-10rpx;
+  margin-top: -10rpx;
   background: #fff;
 }
 
 .list>.item>.up>.right {
   box-sizing: border-box;
   font-size: 32rpx;
-  margin-left:20rpx;
+  margin-left: 20rpx;
 }
 
 .list>.item>.up>.right>view {
@@ -219,28 +219,8 @@ page {
   height: 292rpx;
 }
 
-/* .box{
-  border-radius: 15rpx; 
-} */
-
-/* .box>.label {
-  margin-bottom: 20rpx;
-  font-size: 36rpx;
-  font-weight: 500;
-  color: #333333;
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
 }
-
-.box>.memo {
-  margin-bottom: 20rpx;
-  font-size: 28rpx;
-  font-weight: 400;
-  color: #333333;
-}
-
-.box>.content {
-  margin-bottom: 20rpx;
-  background: #FFFFFF;
-  border-radius: 32rpx;
-  padding: 20rpx;
-} */
-

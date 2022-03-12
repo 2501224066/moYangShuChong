@@ -127,17 +127,27 @@
   </view>
 </view> -->
 
-<modal hidden="{{hiddenmodal}}" title="预约规则" confirm-text="确认" cancel-text="取消" bindcancel="cancelM" bindconfirm="confirmM">
+<modal hidden="{{hiddenmodal}}" title="预约规则" confirm-text="确认" cancel-text="取消" bindcancel="cancelM"
+  bindconfirm="confirmM">
   <view>
-    <view >1、用户主动取消</view>
-      <view>
-        开课前6小时内，无法免责取消。开课前6小时内取消预约会抵扣课时，请大家根据自己的时间，合理安排课程预约。
-      </view>
-      <view >2、书馆发起取消</view>
-      <view >
-        课程开始前120分钟，预约会员人数小于3人，后台系统会自动取消课程，取消的课程无法继续预约。已经预约的用户，取消课程不计入您的课时内。
-      </view>
+    <view>1、用户主动取消</view>
+    <view>
+      开课前6小时内，无法免责取消。开课前6小时内取消预约会抵扣课时，请大家根据自己的时间，合理安排课程预约。
+    </view>
+    <view>2、书馆发起取消</view>
+    <view>
+      课程开始前120分钟，预约会员人数小于3人，后台系统会自动取消课程，取消的课程无法继续预约。已经预约的用户，取消课程不计入您的课时内。
+    </view>
   </view>
 </modal>
 
-
+<modal hidden="{{!peopleShow}}" title="选择人员" confirm-text="确认" cancel-text="取消" bindconfirm="reserveOp">
+  <view>
+    <checkbox-group bindchange="checkboxChange">
+      <view class="checkbox" wx:for="{{checkoutForList}}" wx:key="index">
+        <checkbox value="{{item.name}}" checked="{{item.checked}}" />
+        <view>{{item.name}}</view>
+      </view>
+    </checkbox-group>
+  </view>
+</modal>
