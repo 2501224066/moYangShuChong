@@ -2,7 +2,8 @@ import {
   reserveList,
   reserve,
   cancel,
-  reserveHas
+  reserveHas,
+  getBabyInfo
 } from "../../config/api"
 
 Page({
@@ -19,7 +20,9 @@ Page({
     weekDay: [],
     weekCheckout: null,
     day: {},
-    list: []
+    list: [],
+    babylist:[],
+    hiddenbaby:true,
   },
 
   onLoad(options) {
@@ -29,7 +32,10 @@ Page({
   onShow() {
     this.getReserveHas()
     this.getData()
+    this.getBaby()
   },
+
+  
 
   // 数据初始化
   initData(options) {
@@ -76,6 +82,16 @@ Page({
       list: res.data
     })
   },
+
+
+  async getBaby() {
+    let res = await getBabyInfo({
+    })
+    this.setData({
+      bobylist: res.data.list
+    })
+  },
+  
 
   // 预约
   reserve(e) {

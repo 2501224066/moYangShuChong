@@ -230,3 +230,15 @@ export function collectAudioList(data, repair = '') {
     data: data
   })
 }
+
+// 获取宝宝信息
+export function getBabyInfo(data, repair = '') {
+  return common.go({
+    method: 'post',
+    url: '/voice/getBabyInfo' + repair,
+    data: data
+  })
+}
+
+
+
