@@ -17,6 +17,10 @@ Page({
   },
 
   onLoad(options) {
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
     this.initData(options)
     this.getData()
   },
@@ -148,4 +152,13 @@ Page({
     // })
     // this.getData()
   },
+
+    //分享
+    onShareAppMessage() {
+      return {
+        title: this.data.detail.bookName,
+        path: "/pages/reserveDetail/reserveDetail" + "?id=" + this.data.id,
+        imageUrl: this.data.detail.bookImg[0].url
+      }
+    }
 })

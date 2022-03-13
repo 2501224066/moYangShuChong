@@ -18,6 +18,10 @@ Page({
   },
 
   async onLoad(options) {
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
     wx.setStorageSync('audioList', [])
     this.getData(options.id)
     this.setVideo()
@@ -148,13 +152,13 @@ Page({
       nowPlayTitle: obj.detail.title
     })
   },
+
   //分享
-  onShareAppMessage: function () {
+  onShareAppMessage() {
     return {
       title: this.data.detail.bookName,
-      path:"/pages/bookDetail/bookDetail"+"?id="+this.data.detail.id
+      path: "/pages/bookDetail/bookDetail" + "?id=" + this.data.detail.id,
+      imageUrl: this.data.detail.bookImg[0].url
     }
-  },
+  }
 })
-
-
