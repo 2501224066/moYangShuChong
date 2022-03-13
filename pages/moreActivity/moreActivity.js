@@ -28,14 +28,6 @@ Page({
 
   },
 
-  onReachBottom() {
-    // this.data.page.num += 1
-    // this.setData({
-    //   page: this.data.page
-    // })
-    // this.getData(true)
-  },
-
   // 跳转
   to(e) {
     wx.$dump(e)

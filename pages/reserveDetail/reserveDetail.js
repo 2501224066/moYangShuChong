@@ -67,18 +67,6 @@ Page({
   // 预约
   async reserve(e) {
     if (!wx.$verifyLogin()) return
-    //   await reserve({
-    //     id: e.currentTarget.dataset.id,
-    //   })
-    //   wx.showToast({
-    //     title: '操作成功',
-    //     icon: 'none'
-    //   })
-    //   this.getData()
-    //   this.msg()
-    // },
-
-
     this.setData({
       hiddenmodal: false,
       itemid: e.currentTarget.dataset.id,
@@ -90,23 +78,6 @@ Page({
       hiddenmodal: true,
     })
   },
-
-  // async confirmM(e) {
-  //   this.setData({
-  //     hiddenmodal: true,
-  //   })
-  //   await reserve({
-  //     id: this.data.itemid,
-  //   })
-  //   wx.showToast({
-  //     title: '操作成功',
-  //     icon: 'none'
-  //   })
-
-  //   this.getData()
-
-  //   this.msg()
-  // },
 
   async confirmM(e) {
     this.setData({
@@ -195,15 +166,6 @@ Page({
         confirmText: '确认',
         success(res) {
           if (res.confirm) {
-            //  cancel({
-            //   id: e.currentTarget.dataset.id,
-            // })
-            // that.getData()
-
-            // wx.showToast({
-            //   title: '操作成功',
-            //   icon: 'none'
-            // })
             let obj = {
               id: e.currentTarget.dataset.id
             }
@@ -217,19 +179,6 @@ Page({
           }
         }
     })
-
-
-
-
-
-    // await cancel({
-    //   id: e.currentTarget.dataset.id,
-    // })
-    // wx.showToast({
-    //   title: '操作成功',
-    //   icon: 'none'
-    // })
-    // this.getData()
   },
 
     //分享
