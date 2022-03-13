@@ -1,7 +1,8 @@
 import {
   reserveDetail,
   reserve,
-  cancel
+  cancel,
+  getBabyInfo
 } from "../../config/api";
 
 Page({
@@ -13,18 +14,31 @@ Page({
       index: 0,
       list: ["活动目标", "伴读介绍", "预约规则"],
     },
-    detail: {}
+    detail: {},
+    checkoutForList: [],
+    checkoutNumber: 0,
+    peopleShow: false,
+    hiddenbaby: true,
   },
 
   onLoad(options) {
     this.initData(options)
     this.getData()
+    this.getBaby()
   },
 
   // 初始化数据
   initData(options) {
     this.setData({
       id: options.id
+    })
+  },
+
+
+  async getBaby() {
+    let res = await getBabyInfo({})
+    this.setData({
+      bobylist: res.data.list
     })
   },
 
@@ -73,22 +87,85 @@ Page({
     })
   },
 
+  // async confirmM(e) {
+  //   this.setData({
+  //     hiddenmodal: true,
+  //   })
+  //   await reserve({
+  //     id: this.data.itemid,
+  //   })
+  //   wx.showToast({
+  //     title: '操作成功',
+  //     icon: 'none'
+  //   })
+
+  //   this.getData()
+
+  //   this.msg()
+  // },
+
   async confirmM(e) {
     this.setData({
       hiddenmodal: true,
     })
-    await reserve({
-      id: this.data.itemid,
-    })
-    wx.showToast({
-      title: '操作成功',
-      icon: 'none'
-    })
-
-    this.getData()
-
-    this.msg()
+    let res = await getBabyInfo()
+    if (res.data.list.length > 1) {
+      this.setData({
+        checkoutForList: res.data.list,
+        peopleShow: true
+      })
+      return
+    }
+    this.reserveOp()
   },
+
+  // 多选变化
+  checkboxChange(e) {
+    this.setData({
+      checkoutNumber: e.detail.value.length
+    })
+  },
+
+  
+  // 预约操作
+  async reserveOp() {
+    console.log(this.data.checkoutForList.length)
+    console.log(this.data.checkoutNumber)
+    if (this.data.checkoutForList.length>1&&this.data.checkoutNumber==0) {
+      wx.showToast({
+        title: '请选择预约人员',
+        icon: 'none'
+      })
+      return
+    }else{
+      this.setData({
+        peopleShow: false,
+      })
+      await reserve({
+        id: this.data.id,
+        number: this.data.checkoutNumber <= 1 ? 1 : this.data.checkoutNumber
+      })
+      wx.showToast({
+        title: '操作成功',
+        icon: 'none'
+      })
+      await this.getData()
+      this.msg()
+    }
+    
+  },
+
+
+
+
+
+
+  cancelpeople(){
+    this.setData({
+      peopleShow: false
+    })
+  },
+
 
   // 订阅
   msg() {
@@ -136,6 +213,8 @@ Page({
           }
         }
     })
+
+
 
 
 

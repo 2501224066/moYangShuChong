@@ -21,8 +21,11 @@ Page({
     weekCheckout: null,
     day: {},
     list: [],
-    babylist:[],
-    hiddenbaby:true,
+    babylist: [],
+    checkoutForList: [],
+    checkoutNumber: 0,
+    peopleShow: false,
+    hiddenbaby: true,
   },
 
   onLoad(options) {
@@ -35,7 +38,7 @@ Page({
     this.getBaby()
   },
 
-  
+
 
   // 数据初始化
   initData(options) {
@@ -85,13 +88,12 @@ Page({
 
 
   async getBaby() {
-    let res = await getBabyInfo({
-    })
+    let res = await getBabyInfo({})
     this.setData({
       bobylist: res.data.list
     })
   },
-  
+
 
   // 预约
   reserve(e) {
@@ -111,7 +113,7 @@ Page({
     })
   },
 
-  cancelM(e) {
+  async cancelM(e) {
     this.setData({
       hiddenmodal: true,
     })
@@ -121,15 +123,56 @@ Page({
     this.setData({
       hiddenmodal: true,
     })
-    await reserve({
-      id: this.data.id,
+    let res = await getBabyInfo()
+    if (res.data.list.length > 1) {
+      this.setData({
+        checkoutForList: res.data.list,
+        peopleShow: true
+      })
+      return
+    }
+    this.reserveOp()
+  },
+
+  // 多选变化
+  checkboxChange(e) {
+    this.setData({
+      checkoutNumber: e.detail.value.length
     })
-    wx.showToast({
-      title: '操作成功',
-      icon: 'none'
+  },
+
+  // 预约操作
+  async reserveOp() {
+    console.log(this.data.checkoutForList.length)
+    console.log(this.data.checkoutNumber)
+    if (this.data.checkoutForList.length>1&&this.data.checkoutNumber==0) {
+      wx.showToast({
+        title: '请选择预约人员',
+        icon: 'none'
+      })
+      return
+    }else{
+      this.setData({
+        peopleShow: false,
+      })
+      await reserve({
+        id: this.data.id,
+        number: this.data.checkoutNumber <= 1 ? 1 : this.data.checkoutNumber
+      })
+      wx.showToast({
+        title: '操作成功',
+        icon: 'none'
+      })
+      await this.getData()
+      this.msg()
+    }
+    
+  },
+
+  cancelpeople(){
+    this.setData({
+      peopleShow: false
     })
-    await this.getData()
-    this.msg()
   },
 
   // 订阅
@@ -170,7 +213,7 @@ Page({
             }
             cancel(obj).then(res => {
               that.getData();
-               wx.showToast({
+              wx.showToast({
                 title: '操作成功',
                 icon: 'none'
               })
