@@ -219,8 +219,70 @@ page {
   height: 292rpx;
 }
 
-.checkbox {
-  display: flex;
+
+
+.people{
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  height:100%;
+  left: 0;
+  top:0;
+  z-index: 999;
+}
+
+.people>.peoplebox{
+  position: absolute;
+  border-radius: 10rpx!important;
+  left:15%;
+  top: 35%;
+  background: #fff;
+  width:70%;
+  border-radius: 30rpx;
   align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.2);
+}
+
+.title{
+  font-size: 40rpx;
+  font-weight: 400;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 40rpx;
+  margin-top: 40rpx;
+}
+.bottom-btn{
+  display: flex;
+  text-align: center;
+  font-size: 34rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-top: 0.1px solid #CCCCCC;
+  font-weight: 400;
+}
+
+.cancelbtn{
+  flex: 1;
+  border-right: 0.1px solid #CCCCCC;
+}
+
+.surebtn{
+  flex: 1;
+  color: #4dc438;
+}
+
+.checkbox {
+  text-align: center;
   margin-bottom: 10rpx;
+  display: flex;
+  padding-left: 60rpx;
+  padding-bottom: 40rpx;
+  
+}
+
+.name{
+  margin-left: 20rpx;
+  font-size: 40rpx;
+  color: #333333;
 }

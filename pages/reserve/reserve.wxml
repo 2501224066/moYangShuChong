@@ -127,7 +127,8 @@
   </view>
 </view> -->
 
-<modal hidden="{{hiddenmodal}}" title="预约规则" confirm-text="确认" cancel-text="取消" bindcancel="cancelM"
+<modal hidden="{{hiddenmodal}}" title="预约规则" confirm-text="确认"
+ cancel-text="取消" bindcancel="cancelM"
   bindconfirm="confirmM">
   <view>
     <view>1、用户主动取消</view>
@@ -141,13 +142,30 @@
   </view>
 </modal>
 
-<modal hidden="{{!peopleShow}}" title="选择人员" confirm-text="确认" cancel-text="取消" bindconfirm="reserveOp">
-  <view>
-    <checkbox-group bindchange="checkboxChange">
+
+<view hidden="{{!peopleShow}}" title="选择预约人员" confirm-text="确认" 
+cancel-text="取消" bindconfirm="reserveOp"  bindcancel="cancelpeople" class="people">
+  <view class="peoplebox">
+    <view class="title">请选择预约人员</view>
+    <view >
+      <checkbox-group bindchange="checkboxChange" >
       <view class="checkbox" wx:for="{{checkoutForList}}" wx:key="index">
-        <checkbox value="{{item.name}}" checked="{{item.checked}}" />
-        <view>{{item.name}}</view>
-      </view>
-    </checkbox-group>
+        <checkbox value="{{item.name}}" checked="{{item.checked}}" class="checkchoose"/>
+        <view class="name">{{item.name}}</view>
+       </view>
+     </checkbox-group>
+    </view>
+    <view >
+      <view class="bottom-btn" >
+          <view class="cancelbtn"  catchtap="cancelpeople">
+            取消
+          </view>
+          <view class="surebtn"  catchtap="reserveOp">
+            确认
+          </view>
+        </view>
+  
+    </view>
   </view>
-</modal>
+</view>
+

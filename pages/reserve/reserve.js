@@ -143,19 +143,36 @@ Page({
 
   // 预约操作
   async reserveOp() {
+    console.log(this.data.checkoutForList.length)
+    console.log(this.data.checkoutNumber)
+    if (this.data.checkoutForList.length>1&&this.data.checkoutNumber==0) {
+      wx.showToast({
+        title: '请选择预约人员',
+        icon: 'none'
+      })
+      return
+    }else{
+      this.setData({
+        peopleShow: false,
+      })
+      await reserve({
+        id: this.data.id,
+        number: this.data.checkoutNumber <= 1 ? 1 : this.data.checkoutNumber
+      })
+      wx.showToast({
+        title: '操作成功',
+        icon: 'none'
+      })
+      await this.getData()
+      this.msg()
+    }
+    
+  },
+
+  cancelpeople(){
     this.setData({
-      peopleShow: false,
+      peopleShow: false
     })
-    await reserve({
-      id: this.data.id,
-      number: this.data.checkoutNumber <= 1 ? 1 : this.data.checkoutNumber
-    })
-    wx.showToast({
-      title: '操作成功',
-      icon: 'none'
-    })
-    await this.getData()
-    this.msg()
   },
 
   // 订阅
