@@ -98,4 +98,11 @@ Page({
   to(e) {
     wx.$dump(e)
   },
+
+   // 去协议
+   toAgree() {
+    wx.navigateTo({
+      url: '/pages/agree/agree',
+    })
+  },
 })

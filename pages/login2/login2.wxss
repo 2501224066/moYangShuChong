@@ -60,7 +60,7 @@
 
 .agree {
   position: fixed;
-  left: 64rpx;
+  left: 154rpx;
   bottom: 10vh;
   color: #666666;
   display: flex;

@@ -8,6 +8,7 @@
     "pages/search/search",
     "pages/result/result",
     "pages/bookcase/bookcase",
+
     "pages/notice/notice",
     "pages/noticeDetail/noticeDetail",
     "pages/moreActivity/moreActivity",
@@ -19,8 +20,8 @@
     "pages/setting/setting",
     "pages/web/web",
     "pages/authInfo/authInfo",
-    "pages/music/music"
-
+    "pages/music/music",
+    "pages/agree/agree"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -55,5 +56,6 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "requiredBackgroundModes": ["audio"]
 }

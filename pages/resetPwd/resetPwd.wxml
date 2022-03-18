@@ -31,6 +31,6 @@
     <view class="img">
       <image src="{{agree ? '/image/check_s.png' : '/image/check.png'}}" mode=" aspectFill"> </image>
     </view>
-    <view>已阅读并同意墨洋书虫<span>《用户协议》</span>、<span>隐私政策》</span></view>
+    <view>已阅读并同意墨洋书虫<span bindtap="toAgree">《用户协议》</span></view>
   </view>
 </view>

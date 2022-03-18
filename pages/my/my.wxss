@@ -113,15 +113,5 @@
   position: absolute;
   width: 680rpx;
   height: 80rpx;
-  /* float: left; */
-  
 }
-
-/* .content>.item>button {
-  background:red;
-  position: absolute;
-  top: 930rpx;
-  height: 100rpx;
-  width: 600rpx;
-} */
 

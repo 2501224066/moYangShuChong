@@ -98,15 +98,6 @@ Page({
   // 预约
   reserve(e) {
     if (!wx.$verifyLogin()) return
-    // reserve({
-    //   id: e.currentTarget.dataset.id,
-    // })
-    // wx.showToast({
-    //   title: '操作成功',
-    //   icon: 'none'
-    // })
-    // this.getData()
-    // this.msg()
     this.setData({
       hiddenmodal: false,
       id: e.currentTarget.dataset.id,
@@ -200,14 +191,6 @@ Page({
         confirmText: '确认',
         success(res) {
           if (res.confirm) {
-            // cancel({
-            //   id: e.currentTarget.dataset.id,
-            // })
-            // wx.showToast({
-            //   title: '操作成功',
-            //   icon: 'none'
-            // })
-            // that.getData();
             let obj = {
               id: e.currentTarget.dataset.id
             }

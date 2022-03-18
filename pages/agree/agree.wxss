@@ -1,0 +1,10 @@
+/* pages/agree/agree.wxss */
+.agreement{
+  padding: 0 30rpx 10vh 30rpx;
+}
+
+.agreement>.title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 34rpx;
+}

@@ -57,7 +57,7 @@ page {
 
 .agree {
   position: fixed;
-  left: 64rpx;
+  left: 154rpx;
   bottom: 10vh;
   color: #fff;
   display: flex;
