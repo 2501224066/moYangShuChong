@@ -10,13 +10,13 @@
   <view style="height: 88rpx;"></view>
 
   <view class="list">
-    <view class="bg" wx:for="{{list.length / 4}}" wx:key="index" style="top: {{(index+1) * 120 -10}}px">
-      <image src="/image/shelf.png" mode="widthFix">
+    <view class="bg" wx:for="{{list.length / 4}}" wx:key="index" style="top: {{(index+1) * 120-10}}px">
+      <image src="/image/shelf.png" mode="widthFix" >
       </image>
     </view>
     <view class="content">
       <view class="img" wx:for="{{list}}" wx:key="index" bindtap="goDetail" data-item="{{item}}">
-        <image src="{{item.bookImg[0].url}}" mode="widthFix">
+        <image src="{{item.bookImg[0].url}}" mode="widthFix" >
         </image>
       </view>
       <view class="img" wx:for="{{(list.length % 4 - 4) * -1}}" wx:key="index"></view>
