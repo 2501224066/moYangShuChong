@@ -1,8 +1,6 @@
 import {
-  collectList,
   collectAudioList
 } from '../../config/api'
-
 
 Page({
   data: {
@@ -33,16 +31,16 @@ Page({
   // 获取音乐
   async getAudio() {
     let res = await collectAudioList({
-      pageNum:1,
-      pageSize:999
+      pageNum: 1,
+      pageSize: 999
     })
     this.setData({
       audio: res.data
     })
     wx.setStorageSync('audioList', res.data.reduce((init, val) => {
       init.push({
-        bookId :val.bookId,
-        collType : val.audio.collType,
+        bookId: val.bookId,
+        collType: val.audio.collType,
         audio: val.audio.url,
         title: val.audio.name
       })

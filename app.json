@@ -8,7 +8,6 @@
     "pages/search/search",
     "pages/result/result",
     "pages/bookcase/bookcase",
-
     "pages/notice/notice",
     "pages/noticeDetail/noticeDetail",
     "pages/moreActivity/moreActivity",
@@ -33,8 +32,7 @@
     "custom": true,
     "selectedColor": "#F3981C",
     "color": "#999",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "墨洋之声",
         "iconPath": "/image/index.png",

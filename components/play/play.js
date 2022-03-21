@@ -3,7 +3,6 @@ import {
   cancelCollectionVoice
 } from "../../config/api"
 
-
 Component({
   properties: {
     show: {
@@ -23,7 +22,7 @@ Component({
       value: false,
       observer: function (val, oldVal) {
         if (!val) {
-          if (this.audioCtx) this.audioCtx.destroy()
+          if (this.audioCtx) this.audioCtx.stop()
           this.initData()
         }
       }
@@ -48,14 +47,11 @@ Component({
   },
   lifetimes: {
     detached() {
-      if (this.audioCtx) this.audioCtx.destroy()
+      //if (this.audioCtx) this.audioCtx.destroy()
       this.removeTiming()
     }
   },
   methods: {
-
-
-
     // 初始化数据
     initData() {
       this.setData({
@@ -126,7 +122,9 @@ Component({
         list: newList
       })
 
-      this.audioCtx = wx.createInnerAudioContext()
+      this.audioCtx = wx.getBackgroundAudioManager() // wx.createInnerAudioContext()
+      this.audioCtx.title = this.data.list[this.data.index].title
+      this.audioCtx.singer = '磨洋书虫'
       this.audioCtx.src = this.data.list[this.data.index].audio
 
       this.setData({
@@ -148,12 +146,16 @@ Component({
       this.audioCtx.onPause((e) => {
         this.removeTiming()
       })
+      // 监听停止
+      this.audioCtx.onStop((e) => {
+        this.remove()
+      })
       // 监听播放结束
       this.audioCtx.onEnded(() => {
         console.log('[audio] play end')
-
         this.playeByType()
       })
+      // 监听背景音频播放进度更新
       this.audioCtx.onTimeUpdate(() => {
         this.unLoginStint()
         this.setData({
@@ -161,6 +163,16 @@ Component({
           long: this.audioCtx.duration
         })
       })
+      // 监听上一曲
+      this.audioCtx.onPrev(() => {
+        this.before()
+      })
+      // 监听下一曲
+      this.audioCtx.onNext(() => {
+        this.after()
+      })
+
+
       if (reset) this.audioCtx.seek(0)
     },
 
@@ -218,15 +230,13 @@ Component({
         this.random()
         return
       }
-      this.audioCtx.pause()
       this.setData({
-        index: this.data.index === 0 ? this.data.list.length - 1 : this.data.index - 1
-      })
-      this.audioCtx.src = this.data.list[this.data.index].audio
-      this.setData({
+        index: this.data.index === 0 ? this.data.list.length - 1 : this.data.index - 1,
         collect: this.data.list[this.data.index].collType
       })
-      this.audioCtx.play()
+      this.audioCtx.title = this.data.list[this.data.index].title
+      this.audioCtx.singer = '磨洋书虫'
+      this.audioCtx.src = this.data.list[this.data.index].audio
       this.outData()
     },
 
@@ -236,49 +246,42 @@ Component({
         this.random()
         return
       }
-      this.audioCtx.pause()
       this.setData({
-        index: this.data.index === this.data.list.length - 1 ? 0 : this.data.index + 1
-      })
-      this.audioCtx.src = this.data.list[this.data.index].audio
-      this.setData({
+        index: this.data.index === this.data.list.length - 1 ? 0 : this.data.index + 1,
         collect: this.data.list[this.data.index].collType
       })
-      this.audioCtx.play()
+      this.audioCtx.title = this.data.list[this.data.index].title
+      this.audioCtx.singer = '磨洋书虫'
+      this.audioCtx.src = this.data.list[this.data.index].audio
       this.outData()
     },
 
     // 随机一首
     random() {
-      console.log("播放")
-      this.audioCtx.pause()
       let arr = Array.apply(null, {
         length: this.data.list.length - 1
       }).map((v, i) => i)
       arr.splice(this.data.index, 1)
       let index = Math.round(Math.random() * arr.length)
       this.setData({
-        index: index
-      })
-      this.audioCtx.src = this.data.list[this.data.index].audio
-      this.setData({
+        index: index,
         collect: this.data.list[this.data.index].collType
       })
-      this.audioCtx.play()
+      this.audioCtx.title = this.data.list[this.data.index].title
+      this.audioCtx.singer = '磨洋书虫'
+      this.audioCtx.src = this.data.list[this.data.index].audio
       this.outData()
     },
 
     // 切换音频
     checkout(e) {
-      this.audioCtx.pause()
       this.setData({
         index: e.currentTarget.dataset.index,
-      })
-      this.audioCtx.src = this.data.list[this.data.index].audio
-      this.setData({
         collect: this.data.list[this.data.index].collType
       })
-      this.audioCtx.play()
+      this.audioCtx.title = this.data.list[this.data.index].title
+      this.audioCtx.singer = '磨洋书虫'
+      this.audioCtx.src = this.data.list[this.data.index].audio
       this.outData()
     },
 
@@ -310,7 +313,8 @@ Component({
 
     // 销毁当前实例
     remove() {
-      this.audioCtx.destroy()
+      this.audioCtx.stop()
+      this.removeTiming()
       this.setData({
         show: false,
         list: [],
