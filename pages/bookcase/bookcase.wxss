@@ -48,7 +48,7 @@
 }
 
 .list>.content>.img {
-  width: 22%;
+  width: 20.1%;
   height: 90px;
   margin-top: 30px;
   display: flex;

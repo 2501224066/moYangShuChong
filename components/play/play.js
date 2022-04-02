@@ -124,7 +124,7 @@ Component({
 
       this.audioCtx = wx.getBackgroundAudioManager() // wx.createInnerAudioContext()
       this.audioCtx.title = this.data.list[this.data.index].title
-      this.audioCtx.singer = '磨洋书虫'
+      this.audioCtx.singer = '墨洋书虫'
       this.audioCtx.src = this.data.list[this.data.index].audio
 
       this.setData({
@@ -235,7 +235,7 @@ Component({
         collect: this.data.list[this.data.index].collType
       })
       this.audioCtx.title = this.data.list[this.data.index].title
-      this.audioCtx.singer = '磨洋书虫'
+      this.audioCtx.singer = '墨洋书虫'
       this.audioCtx.src = this.data.list[this.data.index].audio
       this.outData()
     },
@@ -251,7 +251,7 @@ Component({
         collect: this.data.list[this.data.index].collType
       })
       this.audioCtx.title = this.data.list[this.data.index].title
-      this.audioCtx.singer = '磨洋书虫'
+      this.audioCtx.singer = '墨洋书虫'
       this.audioCtx.src = this.data.list[this.data.index].audio
       this.outData()
     },
@@ -268,7 +268,7 @@ Component({
         collect: this.data.list[this.data.index].collType
       })
       this.audioCtx.title = this.data.list[this.data.index].title
-      this.audioCtx.singer = '磨洋书虫'
+      this.audioCtx.singer = '墨洋书虫'
       this.audioCtx.src = this.data.list[this.data.index].audio
       this.outData()
     },
@@ -280,7 +280,7 @@ Component({
         collect: this.data.list[this.data.index].collType
       })
       this.audioCtx.title = this.data.list[this.data.index].title
-      this.audioCtx.singer = '磨洋书虫'
+      this.audioCtx.singer = '墨洋书虫'
       this.audioCtx.src = this.data.list[this.data.index].audio
       this.outData()
     },
