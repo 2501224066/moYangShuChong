@@ -1,5 +1,5 @@
 import {
-  home
+  home,getUserInfo
 } from '../../config/api'
 
 Page({
@@ -13,7 +13,16 @@ Page({
   onLoad() {
     this.init()
     this.getData()
+    if (wx.getStorageSync('loginStatus')) {
+        this.getUser()
+    }
   },
+
+  async getUser(){
+    let res = await getUserInfo()
+    wx.setStorageSync('userType', res.data.userType)
+  },
+
 
   // 初始化数据
   init() {

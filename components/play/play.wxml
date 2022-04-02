@@ -91,4 +91,19 @@
     </view>
 
   </view>
+
+  <view hidden="{{!kefushow}}"  confirm-text="确认"  class="kefu">
+    <view class="kefubox">
+      <view class="title">加入我们，解锁更多功能~</view>
+      <view class="bottom_view">
+        <view class="cancle" bindtap="canle">取消</view>
+        <!-- <view class="label">咨询客服</view> -->
+        <button open-type="contact" bindcontact="handleContact" class="label" >咨询客服</button>
+      </view>
+      
+   </view>
+  </view>
 </view>
+
+
+
