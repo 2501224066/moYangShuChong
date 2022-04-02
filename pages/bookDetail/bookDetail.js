@@ -14,7 +14,8 @@ Page({
     playerShow: false,
     small: false,
     nowPlayTitle: null,
-    videoContext: null
+    videoContext: null,
+    kefushow:false,
   },
 
   async onLoad(options) {
@@ -34,10 +35,27 @@ Page({
     })
   },
 
+
+  canle(){
+    this.setData({
+      kefushow:false,
+    })
+  },
   // 视频播放监听
   videoTimeupdate(e) {
     if (wx.getStorageSync('loginStatus')) {
-      return
+        if (wx.getStorageSync('userType') == 0) {
+          if (this.audioCtx.currentTime >= 90) {
+            this.audioCtx.seek(0)
+            this.audioCtx.pause()
+            this.setData({
+                kefushow:true,
+              })
+          return
+        }
+      }else{
+        return
+      }
     }
     if (e.detail.currentTime > 90) {
       this.data.videoContext.seek(0)

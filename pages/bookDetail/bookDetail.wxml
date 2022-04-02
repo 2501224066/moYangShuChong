@@ -62,7 +62,7 @@
     <!-- 绘本导读 -->
     <view class="box" wx:if="{{tab.index === 2}}">
       <video wx:if="{{detail.guideVideo && detail.guideVideo.length > 0}}" id="myVideo"
-        src="{{detail.guideVideo.length && detail.guideVideo[0].url}}" bindtimeupdate="videoimeupdate"></video>
+        src="{{detail.guideVideo.length && detail.guideVideo[0].url}}" bindtimeupdate="videoTimeupdate"></video>
       <view class="none" wx:else>
         <view class="img">
           <image src="/image/noData.png" mode="aspectFill"></image>
@@ -74,3 +74,15 @@
 </view>
 
 <Play show="{{playerShow}}" small="{{small}}" bind:nowPlay="nowPlay"></Play>
+
+
+<view hidden="{{!kefushow}}"  confirm-text="确认"  class="kefu">
+    <view class="kefubox">
+      <view class="title">加入墨洋，解锁2000+经典故事～</view>
+      <view class="bottom_view">
+        <view class="cancle" bindtap="canle">取消</view>
+        <!-- <view class="label">咨询客服</view> -->
+        <button open-type="contact" bindcontact="handleContact" class="label" >咨询客服</button>
+      </view>
+   </view>
+  </view>

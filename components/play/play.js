@@ -44,6 +44,7 @@ Component({
     touchAfterNow: 0, // 拖动前的now
     touchAfterX: 0, // 拖动前的位置
     collect: 0,
+    kefushow: false,
   },
   lifetimes: {
     detached() {
@@ -195,10 +196,27 @@ Component({
       }
     },
 
+    canle() {
+      this.setData({
+        kefushow: false,
+      })
+    },
+
     // 未登录限制
     unLoginStint() {
       if (wx.getStorageSync('loginStatus')) {
-        return
+        if (wx.getStorageSync('userType') == 0) {
+          if (this.audioCtx.currentTime >= 90) {
+            this.audioCtx.seek(0)
+            this.audioCtx.pause()
+            this.setData({
+              kefushow: true,
+            })
+            return
+          }
+        } else {
+          return
+        }
       }
       if (this.audioCtx.currentTime >= 90) {
         this.audioCtx.seek(0)

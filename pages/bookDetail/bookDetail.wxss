@@ -181,3 +181,58 @@
   font-weight: 400;
   color: #FFFFFF;
 }
+
+
+.kefu{
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  height:100%;
+  left: 0;
+  top:0;
+  z-index: 999;
+}
+
+.kefu>.kefubox
+{
+  position: absolute;
+  border-radius: 20rpx!important;
+  left:10%;
+  top: 35%;
+  background: #fff;
+  width:80%;
+  border-radius: 30rpx;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.2);
+}
+
+
+.kefu>.kefubox>.title
+{
+    font-size: 36rpx;
+    text-align: center;
+    width: 100%;
+    padding-top: 60rpx;
+}
+.kefu>.kefubox>.bottom_view
+{
+  display: flex;
+  padding: 60rpx 0 10rpx 0;
+}
+.kefu>.kefubox>.bottom_view>.label
+{
+     font-size: 30rpx;
+     text-align: center;
+     color: rgb(97, 159, 231);
+     flex: 1;
+     margin-top: -15rpx;
+     background-color: white;
+}
+.kefu>.kefubox>.bottom_view>.cancle
+{
+   text-align: center;
+   font-size: 28rpx;
+   flex: 1;
+
+}

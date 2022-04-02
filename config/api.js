@@ -242,3 +242,11 @@ export function getBabyInfo(data, repair = '') {
 
 
 
+// 获取用户信息
+export function getUserInfo(data, repair = '') {
+  return common.go({
+    method: 'get',
+    url: '/user/getUser' + repair,
+    data: data
+  })
+}
